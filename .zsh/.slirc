@@ -1,0 +1,37 @@
+#SLI stuff
+SLI_WORKSPACE="~/Documents/workspace/SLI/sli"
+DASHBOARD_POM="$SLI_WORKSPACE/dashboard/pom.xml"
+API_POM="$SLI_WORKSPACE/api/pom.xml"
+SCAFFOLD_POM="$SLI_WORKSPACE/scaffold/pom.xml"
+COMMON_POM="$SLI_WORKSPACE/common/pom.xml"
+
+
+alias build_dashboard="mvn clean install -P test -f $DASHBOARD_POM"
+alias run_dashboard="mvn jetty:run -P test -f $DASHBOARD_POM"
+
+alias build_api="mvn clean install -DskipTests -f $API_POM"
+alias run_api="mvn jetty:run -DskipTests -f $API_POM"
+
+alias build_common="mvn clean install -DskipTests -f $COMMON_POM"
+alias generate_docs="mvn clean install -DskipTests -P apidoc -f $API_POM"
+
+alias build_scaffold="mvn clean install -DskipTests -f $SCAFFOLD_POM"
+
+function cisli() {
+	echo "build common";
+	build_common;
+	echo "build scaffold";
+	build_scaffold;
+	echo "build api";
+	build_api;
+	echo "generate docs"; 
+	generate_docs;
+}
+
+function docs() {
+	echo "build scaffold"
+	build_scaffold
+	echo "generate docs"
+	generate_docs
+}
+## END SLI

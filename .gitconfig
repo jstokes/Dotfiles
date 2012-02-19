@@ -1,0 +1,21 @@
+[user]
+	name = Jeffrey Stokes
+[core]
+	excludesfile = ~/.gitignore_global
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[alias]
+	unstage = reset HEAD
+	uncommit = reset --soft HEAD^
+	pl = pull
+	ph = push
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	df = diff
+[color]
+	ui = true
