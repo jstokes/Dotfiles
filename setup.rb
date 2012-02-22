@@ -2,7 +2,7 @@
 # setup.rb
 
 #list of dirs which you don't want to symlink
-ignored = %w(.gitignore .gitmodules misc setup.rb readme)
+ignored = %w(.gitignore .gitmodules setup.rb readme init installer)
 
 current_dir = File.expand_path(Dir.pwd)
 home_dir = File.expand_path("~")
