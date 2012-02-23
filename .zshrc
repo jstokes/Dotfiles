@@ -5,6 +5,7 @@ ZSH_THEME="robbyrussell"
 
 ##SLI STUFF
 source ~/.zsh/.slirc
+source ~/.zsh/.mavenrc
 
 alias zshconfig="subl ~/.zshrc"
 alias ohmyzsh="subl ~/.oh-my-zsh"
