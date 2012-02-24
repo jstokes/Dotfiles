@@ -18,7 +18,7 @@ alias generate_docs="mvn clean install -DskipTests -P apidoc -f $API_POM"
 
 alias build_scaffold="mvn clean install -DskipTests -f $SCAFFOLD_POM"
 
-hash -d sli=/Users/jstokes/Documents/workspace/SLI/sli
+hash -d sli=~/Documents/workspace/SLI/sli
 
 function cisli() {
 	echo "build domain";

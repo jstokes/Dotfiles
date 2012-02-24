@@ -17,6 +17,7 @@
 	ci = commit
 	br = branch
 	df = diff
+    dc = diff --cached
 	aa = add -A
 [color]
 	ui = true
