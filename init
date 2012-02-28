@@ -2,10 +2,10 @@
 cd ~/Dotfiles/
 
 echo "installing spf13"
-./spf13_vim.install
+./installer/spf13_vim.install
 
 echo "installing oh-my-zsh"
-./oh-my-zsh.install
+./installer/oh-my-zsh.install
 
 echo "linking dot files"
 ruby setup.rb
