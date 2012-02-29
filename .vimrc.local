@@ -1,3 +1,8 @@
-colorscheme molokai
+colorscheme tomorrow_night
+
 let mapleader=","
+
 set guifont=Droid_Sans_Mono:h11
+
+inoremap jk <Esc>
+noremap <silent><Leader>/ :nohls<CR>
