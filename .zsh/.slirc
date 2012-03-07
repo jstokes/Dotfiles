@@ -40,4 +40,7 @@ function docs() {
 	echo "generate docs"
 	generate_docs
 }
+
+export CATALINA_OPTS="-Dsli.env=local  -Dsli.encryption.keyStore=/Users/jstokes/Documents/workspace/SLI/sli/data-access/dal/keyStore/localKeyStore.jks -Dsli.encryption.properties=/Users/jstokes/Documents/workspace/SLI/sli/data-access/dal/keyStore/localEncryption.properties"
+
 ## END SLI_WORKSPACE

@@ -10,6 +10,8 @@ source ~/.zsh/.mavenrc
 alias zshconfig="subl ~/.zshrc"
 alias ohmyzsh="subl ~/.oh-my-zsh"
 
+hash -d tomcat=/Library/Tomcat/
+
 autoload -U colors
 colors
 
