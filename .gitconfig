@@ -20,5 +20,7 @@
 	df = diff
     dc = diff --cached
 	aa = add -A
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [color]
 	ui = true

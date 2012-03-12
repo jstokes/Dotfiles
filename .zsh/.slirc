@@ -41,6 +41,24 @@ function docs() {
 	generate_docs
 }
 
+function deploy_api() {
+
+    echo "removing old api.war and api/ in webapps"
+    rm /Library/Tomcat/webapps/api.war
+    rm -rf /Library/Tomcat/webapps/apps/api
+
+    echo "moving api.war into webapps"
+    cp ~/Documents/workspace/SLI/sli/api/target/api.war /Library/Tomcat/webapps/
+
+}
+
+function shutdown() {
+    /Library/Tomcat/bin/shutdown.sh
+}
+
+function startup() {
+    /Library/Tomcat/bin/startup.sh
+}
 export CATALINA_OPTS="-Dsli.env=local  -Dsli.encryption.keyStore=/Users/jstokes/Documents/workspace/SLI/sli/data-access/dal/keyStore/localKeyStore.jks -Dsli.encryption.properties=/Users/jstokes/Documents/workspace/SLI/sli/data-access/dal/keyStore/localEncryption.properties"
 
 ## END SLI_WORKSPACE
