@@ -36,3 +36,5 @@ Thumbs.db
 # Eclipse files #
 #################
 .metadata
+
+sli/ingestion/overlays/

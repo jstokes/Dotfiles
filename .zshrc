@@ -24,7 +24,7 @@ DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow ruby rails)
+plugins=(git git-flow ruby rails bundler)
 
 source $ZSH/oh-my-zsh.sh
 
