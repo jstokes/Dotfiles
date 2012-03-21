@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="robbyrussell"
+ZSH_THEME="sorin"
 
 ##SLI STUFF
 source ~/.zsh/.slirc
@@ -13,7 +12,6 @@ alias ohmyzsh="subl ~/.oh-my-zsh"
 hash -d tomcat=/Library/Tomcat/
 
 autoload -U colors
-colors
 
 alias subl='subl -n'
 
