@@ -6,6 +6,3 @@ echo "installing oh-my-zsh"
 
 echo "linking dot files"
 ruby setup.rb
-
-echo "changing to zsh"
-chsh -s $(which zsh)

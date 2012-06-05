@@ -36,6 +36,11 @@ Thumbs.db
 #################
 .metadata
 
+
+# Vim Files       #
+##################
+*.swp
+.*.swp
 sli/ingestion/overlays/
 sli/ingestion/ingestion-service/overlays/
 ingestion-dev.properties
