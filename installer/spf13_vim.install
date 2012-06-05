@@ -1,6 +1,0 @@
-#!/bin/bash
-cd ~
-curl http://j.mp/spf13-vim3 -L -o - | sh
-
-##copy my vim color
-cp ../tomorrow_night.vim ~/.vim/bundle/vim-colors/colors/
