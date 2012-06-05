@@ -1,28 +1,28 @@
 [user]
-	name = Jeffrey Stokes
+  name = Jeffrey Stokes
 [core]
-	excludesfile = ~/.gitignore_global
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-	ignorecase = true
-	editor = mvim -f
+  excludesfile = ~/.gitignore_global
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  editor = vim 
 [alias]
-	unstage = reset HEAD
-	uncommit = reset --soft HEAD^
-	pl = pull
-	ph = push
-	st = status
-	co = checkout
-	ci = commit
-	br = branch
-	df = diff
-    dc = diff --cached
-	aa = add -A
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  unstage = reset HEAD
+  uncommit = reset --soft HEAD^
+  pl = pull
+  ph = push
+  st = status
+  co = checkout
+  ci = commit
+  br = branch
+  df = diff
+  dc = diff --cached
+  aa = add -A
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [color]
-	ui = true
+  ui = true
 [push]
-	default = current
+  default = current

@@ -13,8 +13,13 @@ alias clr='clear'
 alias post-review="post-review --guess-description -o"
 alias mvnjr="mvn jetty:run"
 alias mvnci="mvn clean install"
-
 alias tmux="TERM=screen-256color-bce tmux"
+alias tmux-buffer-to-clipboard='tmux save-buffer -|pbcopy'
+alias tmux-buffer-from-clipboard='tmux set-buffer "$(pbpaste)"'
+
+function kill-jetty() {
+  ps aux | grep jetty:run | awk '{print $2}' | xargs kill -9
+}
 
 hash -d tomcat=/Library/Tomcat/
 hash -d patches=~/patches/
