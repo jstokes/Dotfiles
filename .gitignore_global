@@ -18,7 +18,6 @@
 *.jar
 *.rar
 *.tar
-*.zip
 
 # Logs and databases #
 ######################
@@ -38,3 +37,7 @@ Thumbs.db
 .metadata
 
 sli/ingestion/overlays/
+sli/ingestion/ingestion-service/overlays/
+ingestion-dev.properties
+sli/ingestion/ingestion-core/src/test/resources/zip/unzip/
+sli/sli-configuration/src/main/resources/config/local/ingestion/ingestion_conf.properties

@@ -4,15 +4,24 @@ ZSH_THEME="sorin"
 
 ##SLI STUFF
 source ~/.zsh/.slirc
-source ~/.zsh/.mavenrc
+
+export M2_HOME=$HOME/Developer/maven/
 
 alias zshconfig="subl ~/.zshrc"
 alias ohmyzsh="subl ~/.oh-my-zsh"
+alias clr='clear'
+alias post-review="post-review --guess-description -o"
+alias mvnjr="mvn jetty:run"
+alias mvnci="mvn clean install"
+
+alias tmux="TERM=screen-256color-bce tmux"
 
 hash -d tomcat=/Library/Tomcat/
+hash -d patches=~/patches/
 
 autoload -U colors
 
+alias gs="echo IDIOT!"
 alias subl='subl -n'
 
 # Uncomment following line if you want to disable autosetting terminal title.
@@ -22,7 +31,7 @@ DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow ruby rails bundler)
+plugins=(git git-flow ruby rails bundler homebrew)
 
 source $ZSH/oh-my-zsh.sh
 

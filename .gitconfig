@@ -7,7 +7,7 @@
 	bare = false
 	logallrefupdates = true
 	ignorecase = true
-	editor = vim
+	editor = mvim -f
 [alias]
 	unstage = reset HEAD
 	uncommit = reset --soft HEAD^
@@ -24,3 +24,5 @@
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [color]
 	ui = true
+[push]
+	default = current

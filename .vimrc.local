@@ -6,3 +6,27 @@ set guifont=Droid_Sans_Mono:h11
 
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
+
+
+function InsertTabWrapper()
+
+    let col = col('.') - 1 
+
+    if !col || getline('.')[col - 1] !~ '\k'
+
+        return "\<tab>"
+
+    else
+
+        return "\<c-p>"
+
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
