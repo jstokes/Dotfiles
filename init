@@ -1,11 +1,11 @@
 #!/bin/bash
 cd ~/Dotfiles/
 
-echo "installing spf13"
-./installer/spf13_vim.install
-
 echo "installing oh-my-zsh"
 ./installer/oh-my-zsh.install
 
 echo "linking dot files"
 ruby setup.rb
+
+echo "changing to zsh"
+chsh -s $(which zsh)
