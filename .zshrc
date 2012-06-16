@@ -1,3 +1,3 @@
-for file in ~/env/.*
-  source $file
-done
+for file in ~/Dotfiles/env/.*
+  do source $file
+done 

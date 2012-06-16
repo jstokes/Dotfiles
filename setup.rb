@@ -10,8 +10,6 @@ home_dir = File.expand_path("~")
 links = `git ls-tree --name-only HEAD`.lines.map(&:strip).select {|x| !ignored.include?(x)  }
 
 links.each do |link|
-
-  puts "link = #{link}"
   link = File.join(current_dir, link)
   symlink = File.join(home_dir, File.basename(link))
 
