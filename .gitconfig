@@ -14,7 +14,7 @@
   uncommit = reset --soft HEAD^
   pl = pull
   ph = push
-  st = status
+  st = status -s
   co = checkout
   ci = commit
   br = branch
