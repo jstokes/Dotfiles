@@ -1,4 +1,5 @@
 alias zshconfig="vim ~/.zshrc"
+alias so="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias clr='clear'
 alias post-review="post-review --guess-description -o"
