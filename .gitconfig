@@ -12,7 +12,7 @@
 [alias]
   unstage = reset HEAD
   uncommit = reset --soft HEAD^
-  pl = pull
+  pl = smart-pull 
   ph = push
   st = status -s
   co = checkout
