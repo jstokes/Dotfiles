@@ -10,8 +10,8 @@
   ignorecase = true
   editor = vim 
 [alias]
-  unstage = reset HEAD
-  uncommit = reset --soft HEAD^
+  us = reset HEAD
+  uc = reset --soft HEAD^
   pl = smart-pull 
   ph = push
   st = status -s
@@ -24,7 +24,10 @@
   ai = add -i
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  rh = reset --hard
+  m = merge
+  cb = checkout -b
 [color]
   ui = true
 [push]
