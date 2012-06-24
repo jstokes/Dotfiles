@@ -18,8 +18,8 @@ let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
 
 set nocompatible
-filetype off
-syntax on               " enable syntax
+syntax on
+filetype plugin indent on
 
 set mouse=a
 
@@ -40,6 +40,8 @@ set noerrorbells  " No noise.
 set vb t_vb=".
 set clipboard=unnamed
 
+set lispwords+=defpartial,defpage
+
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
 
@@ -51,7 +53,6 @@ endif
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
-filetype plugin indent on
 
 let mapleader=","
 let g:SuperTabDefaultCompletionType = "context"
