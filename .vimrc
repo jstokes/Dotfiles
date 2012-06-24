@@ -1,3 +1,22 @@
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle "cucumber.zip"
+Bundle "git.zip"
+Bundle "fugitive.vim"
+Bundle "vim-ruby/vim-ruby"
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'ervandew/supertab'
+Bundle "ack.vim"
+Bundle "VimClojure"
+
+" Settings for VimClojure
+let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
+let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
+
 set nocompatible
 filetype off
 syntax on               " enable syntax
@@ -32,10 +51,6 @@ endif
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
 filetype plugin indent on
 
 let mapleader=","
@@ -45,6 +60,7 @@ set guifont=Droid_Sans_Mono:h11
 
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
+map <Leader>= gg=G<CR>
 
 set expandtab
 set tabstop=2
@@ -56,21 +72,7 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
-Bundle 'gmarik/vundle'
-Bundle 'git://git.wincent.com/command-t.git'
-Bundle "cucumber.zip"
-Bundle "git.zip"
-Bundle "fugitive.vim"
-Bundle "vim-ruby/vim-ruby"
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'ervandew/supertab'
-" Ack
-Bundle "ack.vim"
-Bundle "VimClojure"
-
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
 
 colorscheme tomorrow_night
-
