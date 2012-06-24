@@ -65,9 +65,10 @@ Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
-
 " Ack
 Bundle "ack.vim"
+Bundle "VimClojure"
+
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
 
