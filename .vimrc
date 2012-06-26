@@ -62,6 +62,12 @@ set guifont=Droid_Sans_Mono:h11
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
 map <Leader>= gg=G<CR>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 set expandtab
 set tabstop=2
