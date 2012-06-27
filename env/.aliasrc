@@ -1,4 +1,4 @@
-alias lazytest="java -cp "src:test:lib/*:lib/dev/*" lazytest.watch src test"
+alias lazytest='java -cp "src:test:lib/*:lib/dev/*" lazytest.watch src test'
 alias zshconfig="vim ~/.zshrc"
 alias so="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
