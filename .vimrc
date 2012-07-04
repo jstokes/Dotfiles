@@ -12,6 +12,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle "ack.vim"
 Bundle "VimClojure"
+Bundle "sjl/gundo.vim"
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
@@ -68,6 +69,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <Leader>u :GundoToggle<CR>
 
 set expandtab
 set tabstop=2
