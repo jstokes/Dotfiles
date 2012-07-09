@@ -1,16 +1,18 @@
-require 'rubygems'
-require 'interactive_editor'
-require 'wirble'
-require 'irb/completion'
-require 'pp'
+if RUBY_ENGINE == 'ruby' 
+  require 'rubygems'
+  require 'interactive_editor'
+  require 'wirble'
+  require 'irb/completion'
+  require 'pp'
 
-IRB.conf[:AUTO_INDENT] = true
+  IRB.conf[:AUTO_INDENT] = true
 
-Wirble.init
-Wirble.colorize
+  Wirble.init
+  Wirble.colorize
 
-def clr
-  system('clear')
+  def clr
+    system('clear')
+  end
+
+  alias :q :exit
 end
-
-alias :q :exit
