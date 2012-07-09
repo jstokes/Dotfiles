@@ -77,6 +77,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <Leader>u :GundoToggle<CR>
+"Ruby debug variable, puts 'var = #{var}'
+nnoremap <Leader>dv viwyoputs "pa = #{pa}"
 nnoremap / /\v
 vnoremap / /\v
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
