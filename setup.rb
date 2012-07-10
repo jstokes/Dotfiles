@@ -17,6 +17,7 @@ links.each do |link|
     File.rename(symlink, "#{symlink}.bak")
   end
 
+  puts "ln -ns #{link} #{symlink}"
   `ln -ns #{link} #{symlink}`
 end
 
