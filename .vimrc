@@ -13,6 +13,7 @@ Bundle 'ervandew/supertab'
 Bundle "ack.vim"
 Bundle "VimClojure"
 Bundle "sjl/gundo.vim"
+Bundle 'The-NERD-Commenter'
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
@@ -31,6 +32,8 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set mouse=a
+set gdefault
+set colorcolumn=85
 set incsearch hlsearch
 set ignorecase  " Do case in sensitive matching with
 set smartcase		" be sensitive when there's a capital letter
@@ -53,6 +56,7 @@ set showcmd " Display an incomplete command in the lower right corner of the Vim
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
+au FocusLost * :wa
 
 " Source the vimrc file after saving it
 if has("autocmd")
@@ -64,7 +68,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
-map <Leader>= gg=G<CR>
+noremap <Leader>= gg=G<CR>
 vnoremap < <gv
 vnoremap > >gv
 nnoremap <C-h> <C-w>h
@@ -74,5 +78,18 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>u :GundoToggle<CR>
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ; :
 
 colorscheme tomorrow_night
