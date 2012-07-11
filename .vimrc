@@ -57,6 +57,11 @@ set showcmd " Display an incomplete command in the lower right corner of the Vim
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
 au FocusLost * :wa
+augroup CommandTExtension
+  autocmd!
+  autocmd FocusGained * CommandTFlush
+  autocmd BufWritePost * CommandTFlush
+augroup END
 
 " Source the vimrc file after saving it
 if has("autocmd")
