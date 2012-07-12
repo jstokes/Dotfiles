@@ -19,6 +19,7 @@
   ci = commit
   br = branch
   df = diff
+  dfs = diff --stat
   dc = diff --cached
   aa = add -A
   ai = add -i
