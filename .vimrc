@@ -99,4 +99,4 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap ; :
 
-colorscheme tomorrow_night
+colorscheme tomorrow-night-bright
