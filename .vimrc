@@ -14,6 +14,8 @@ Bundle "ack.vim"
 Bundle "VimClojure"
 Bundle "sjl/gundo.vim"
 Bundle 'The-NERD-Commenter'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'ootoovak/vim-tomorrow-night'
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
