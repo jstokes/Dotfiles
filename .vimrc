@@ -35,7 +35,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set mouse=a
 set gdefault
-set colorcolumn=120
+set colorcolumn=100
 set incsearch hlsearch
 set ignorecase  " Do case in sensitive matching with
 set smartcase		" be sensitive when there's a capital letter
