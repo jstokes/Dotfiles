@@ -76,6 +76,8 @@ let g:SuperTabDefaultCompletionType = "context"
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
 noremap <Leader>= gg=G<CR>
+"Ruby debug variable, puts 'var = #{var}'
+nnoremap <Leader>dv viwyoputs "pa = #{pa}"
 vnoremap < <gv
 vnoremap > >gv
 nnoremap <C-h> <C-w>h
