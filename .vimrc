@@ -35,7 +35,6 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set mouse=a
 set gdefault
-set colorcolumn=100
 set incsearch hlsearch
 set ignorecase  " Do case in sensitive matching with
 set smartcase		" be sensitive when there's a capital letter
@@ -97,8 +96,6 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-nnoremap / /\v
-vnoremap / /\v
 nnoremap ; :
 
 colorscheme tomorrow-night-bright
