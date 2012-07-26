@@ -16,7 +16,7 @@ Bundle "sjl/gundo.vim"
 Bundle 'The-NERD-Commenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ootoovak/vim-tomorrow-night'
-
+Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
@@ -49,7 +49,7 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
 set clipboard=unnamed
-set guifont=Droid_Sans_Mono:h13
+set guifont=Menlo_bold:h13
 set lispwords+=defpartial,defpage
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
@@ -68,6 +68,10 @@ augroup END
 if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
+
+if has("gui_macvim")
+  map <Leader>t <Plug>PeepOpen
+end
 
 let mapleader=","
 let g:SuperTabDefaultCompletionType = "context"
