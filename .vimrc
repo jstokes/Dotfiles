@@ -17,6 +17,8 @@ Bundle 'The-NERD-Commenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ootoovak/vim-tomorrow-night'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
+Bundle 'altercation/vim-colors-solarized'
+
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
@@ -70,7 +72,7 @@ if has("autocmd")
 endif
 
 if has("gui_macvim")
-  map <Leader>t <Plug>PeepOpen
+  map <Leader>p <Plug>PeepOpen
 end
 
 let mapleader=","
@@ -102,4 +104,5 @@ nnoremap j gj
 nnoremap k gk
 nnoremap ; :
 
-colorscheme tomorrow-night-bright
+set background=light
+colorscheme solarized 
