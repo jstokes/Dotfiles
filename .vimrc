@@ -76,7 +76,6 @@ if has("gui_macvim")
 end
 
 let mapleader=","
-let g:SuperTabDefaultCompletionType = "context"
 
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
@@ -103,6 +102,7 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
+cmap W w
 
 set background=light
 colorscheme solarized 
