@@ -72,7 +72,7 @@ if has("autocmd")
 endif
 
 if has("gui_macvim")
-  map <Leader>p <Plug>PeepOpen
+  map <Leader>t <Plug>PeepOpen
 end
 
 let mapleader=","
