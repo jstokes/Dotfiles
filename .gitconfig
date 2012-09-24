@@ -29,6 +29,7 @@
   rh = reset --hard
   m = merge
   cb = checkout -b
+  nm = log head "^master" --pretty=oneline --no-merges
 [color]
   ui = true
 [push]

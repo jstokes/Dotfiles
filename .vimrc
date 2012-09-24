@@ -102,7 +102,7 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
-cmap W w
 
-set background=light
+set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized 

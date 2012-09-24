@@ -1,3 +1,18 @@
 function kill-jetty() {
   ps aux | grep jetty:run | awk '{print $2}' | xargs kill -9
 }
+
+function kill-rails() {
+  ps aux | grep rails | awk '{print $2}' | xargs kill -9
+}
+
+function kill-tomcat() {
+  ps aux | grep tomcat | awk '{print $2}' | xargs kill -9
+}
+
+function test-prep() {
+  drop-sli;
+  kill-jetty;
+  kill-tomcat;
+  kill-rails;
+}
