@@ -18,6 +18,8 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'ootoovak/vim-tomorrow-night'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'repos-scala/scala-vundle'
+Bundle 'scrooloose/syntastic'
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
