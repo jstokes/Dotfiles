@@ -17,7 +17,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ootoovak/vim-tomorrow-night'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized' 
 Bundle 'repos-scala/scala-vundle'
 Bundle 'scrooloose/syntastic'
 
