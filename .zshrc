@@ -1,8 +1,9 @@
+#!/bin/zsh
+
 for file in ~/Dotfiles/env/.*
   do source $file
 done 
 
-#!/bin/zsh
 
 # Copyleft 2010 paradoxxxzero All wrongs reserved
 # With contribution from James Ahlborn
