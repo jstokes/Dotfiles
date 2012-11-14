@@ -41,6 +41,7 @@ Thumbs.db
 ##################
 *.swp
 .*.swp
+.swo
 
 
 # Stupid SLI Stuff #
