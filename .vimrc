@@ -104,6 +104,8 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
+" Copy the full path of the current file to clipboard
+nmap ,cl :let @*=expand("%:p")<CR>
 
 set background=dark
 let g:solarized_termtrans = 1
