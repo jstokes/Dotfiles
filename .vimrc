@@ -109,4 +109,5 @@ nmap ,cl :let @*=expand("%:p")<CR>
 
 set background=dark
 let g:solarized_termtrans = 1
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 colorscheme solarized 
