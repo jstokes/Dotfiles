@@ -10,3 +10,6 @@ function kill-tomcat() {
   ps aux | grep tomcat | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 }
 
+function findopen() {
+  find . | ack $1 | xargs mvim
+}
