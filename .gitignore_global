@@ -45,6 +45,7 @@ Thumbs.db
 
 
 # Stupid SLI Stuff #
+*.iml
 */ingestion/ingestion-service/src/main/resources/_indexParserBegin.js
 */ingestion/ingestion-service/src/main/resources/_indexParserEnd.js
 */ingestion/ingestion-service/src/main/resources/indexCheck.sh
