@@ -13,3 +13,7 @@ function kill-tomcat() {
 function findopen() {
   find . | ack $1 | xargs mvim
 }
+
+function web-serve() {
+  python -m SimpleHTTPServer 
+}
