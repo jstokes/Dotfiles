@@ -11,3 +11,5 @@ alias tmux-buffer-to-clipboard='tmux save-buffer -|pbcopy'
 alias tmux-buffer-from-clipboard='tmux set-buffer "$(pbpaste)"'
 alias gs="echo IDIOT!"
 alias subl='subl -n'
+
+alias tm='ps aux | grep'
