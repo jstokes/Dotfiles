@@ -53,7 +53,7 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
 set clipboard=unnamed
-set guifont=Menlo_bold:h13
+set guifont=Droid\ Sans\ Mono:h12
 set lispwords+=defpartial,defpage
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
