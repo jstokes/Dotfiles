@@ -9,7 +9,7 @@
   logallrefupdates = true
   ignorecase = false
   editor = vim 
-	pager = less -r
+  pager = less -r
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
