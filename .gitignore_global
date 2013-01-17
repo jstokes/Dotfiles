@@ -42,14 +42,3 @@ Thumbs.db
 *.swp
 .*.swp
 .swo
-
-
-# Stupid SLI Stuff #
-*.iml
-*/ingestion/ingestion-service/src/main/resources/_indexParserBegin.js
-*/ingestion/ingestion-service/src/main/resources/_indexParserEnd.js
-*/ingestion/ingestion-service/src/main/resources/indexCheck.sh
-*/ingestion/ingestion-service/src/main/resources/ingestion_batch_job_indexes.js
-*/ingestion/ingestion-service/src/main/resources/is_indexes.js
-*/ingestion/ingestion-service/src/main/resources/rmv-nindexes.rb
-*/ingestion/ingestion-service/src/main/resources/sli_indexes.js
