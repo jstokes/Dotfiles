@@ -73,10 +73,6 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
-if has("gui_macvim")
-  map <Leader>t <Plug>PeepOpen
-end
-
 let mapleader=","
 
 inoremap jk <Esc>
@@ -105,7 +101,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap ; :
 " Copy the full path of the current file to clipboard
-nmap ,cl :let @*=expand("%:p")<CR>
+nmap ,cp :let @*=expand("%:p")<CR>
 
 set background=dark
 let g:solarized_termtrans = 1
