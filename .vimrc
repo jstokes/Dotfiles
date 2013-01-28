@@ -102,6 +102,7 @@ nnoremap k gk
 nnoremap ; :
 " Copy the full path of the current file to clipboard
 nmap ,cp :let @*=expand("%:p")<CR>
+nmap ,5 :Gblame<CR>
 
 set background=dark
 let g:solarized_termtrans = 1

@@ -21,6 +21,7 @@
   br = branch
   df = diff
   dfs = diff --stat
+  dfp = diff head~
   dc = diff --cached
   aa = add -A
   ai = add -i

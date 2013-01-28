@@ -11,7 +11,7 @@ function kill-tomcat() {
 }
 
 function findopen() {
-  find . | ack $1 | xargs mvim
+  find . | ack $1 | xargs mvim -v
 }
 
 function web-serve() {
