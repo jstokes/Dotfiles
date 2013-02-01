@@ -25,8 +25,3 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=/usr/local/Cellar/ruby/1.9.3-p362/bin:/usr/local/share/npm/bin:/Users/jstokes/Developer/bin/apache-activemq-5.7.0/bin:/usr/local/mysql/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/jstokes/.rvm/gems/ruby-1.9.2-p290/bin:/Users/jstokes/.rvm/gems/ruby-1.9.2-p290@global/bin:/Users/jstokes/.rvm/rubies/ruby-1.9.2-p290/bin:/Users/jstokes/.rvm/bin:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/Users/jstokes/Developer/maven/bin:/Users/jstokes/Developer/mongo2.2/bin:/usr/X11/bin:/usr/local/git/bin:/Users/jstokes/Developer/maven/bin:/Users/jstokes/Developer/maven/bin:/Users/jstokes/Developer/bin:/Users/jstokes/.rvm/bin:/Users/jstokes/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/jstokes/.rvm/gems/ruby-1.9.3-p194/bin:/Users/jstokes/.rvm/gems/ruby-1.9.3-p194@global/bin:/Applications/apache-jmeter-2.8/bin
-
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
