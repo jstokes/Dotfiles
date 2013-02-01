@@ -1,3 +1,8 @@
+require 'rubygems'
+require 'interactive_editor'
+require 'irb/completion'
+require 'pp'
+
 if RUBY_ENGINE == 'ruby' 
   require 'wirble'
   Wirble.init
@@ -6,10 +11,6 @@ else
   require 'irb/ext/colorize'
 end
 
-require 'rubygems'
-require 'interactive_editor'
-require 'irb/completion'
-require 'pp'
 
 IRB.conf[:AUTO_INDENT] = true
 
