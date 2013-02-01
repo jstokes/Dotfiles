@@ -8,7 +8,7 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-  editor = vim 
+  editor = mvim -v
   pager = less -r
 [alias]
   us = reset HEAD
