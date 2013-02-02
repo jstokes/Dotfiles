@@ -14,6 +14,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 export EDITOR='mvim -v'
+zstyle ':completion:*' hosts off
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
