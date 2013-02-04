@@ -58,6 +58,7 @@ set lispwords+=defpartial,defpage
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
+set autoread
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
