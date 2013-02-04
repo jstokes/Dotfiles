@@ -9,7 +9,6 @@ Bundle "fugitive.vim"
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
-Bundle 'ervandew/supertab'
 Bundle "ack.vim"
 Bundle "VimClojure"
 Bundle "sjl/gundo.vim"
@@ -108,5 +107,4 @@ nmap ,a ggVG
 
 set background=dark
 let g:solarized_termtrans = 1
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 colorscheme tomorrow-night-bright
