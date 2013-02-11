@@ -21,7 +21,9 @@ COMPLETION_WAITING_DOTS="true"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
-plugins=(git bundle)
+ulimit -n 20000
+
+plugins=(vi-mode git bundle)
 
 source $ZSH/oh-my-zsh.sh
 
