@@ -90,14 +90,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>u :GundoToggle<CR>
 noremap <LocalLeader># "ayiw:Ack <C-r>a<CR>
 vnoremap <LocalLeader># "ay:Ack <C-r>a<CR>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+nnoremap <down> :bprev<CR>
+nnoremap <up> :bnext<CR>
+nnoremap <left> :tabnext<CR>
+nnoremap <right> :tabprev<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
@@ -105,6 +101,10 @@ nnoremap ; :
 nmap ,cp :let @*=expand("%:p")<CR>
 nmap ,5 :Gblame<CR>
 nmap ,a ggVG
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 
 set background=dark
 let g:solarized_termtrans = 1
