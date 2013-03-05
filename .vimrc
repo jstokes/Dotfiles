@@ -21,6 +21,7 @@ Bundle 'repos-scala/scala-vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/buftabs'
+Bundle 'airblade/vim-gitgutter'
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
@@ -60,6 +61,7 @@ set laststatus=2  " Always show status line.
 set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
 set autoread " Read from file when it changes on the FS
+set backspace=2 
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
