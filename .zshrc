@@ -4,6 +4,9 @@ for file in ~/Dotfiles/env/.*
   do source $file
 done 
 
+ZSH_THEME_GIT_PROMPT_PREFIX="["         # Prefix at the very beginning of the prompt, before the branch name
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"             # At the very end of the prompt
+
 bindkey -v
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
@@ -21,7 +24,8 @@ COMPLETION_WAITING_DOTS="true"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
-plugins=(vi-mode git bundle rake)
+
+plugins=(vi-mode git bundle)
 
 source $ZSH/oh-my-zsh.sh
 
