@@ -62,6 +62,7 @@ set ruler  " Show ruler
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
 set autoread " Read from file when it changes on the FS
 set backspace=2 
+set t_Co=256
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
@@ -78,6 +79,7 @@ if has("autocmd")
 endif
 
 let mapleader=","
+let g:EclimCompletionMethod = 'omnifunc'
 
 inoremap jk <Esc>
 noremap <silent><Leader>/ :nohls<CR>
