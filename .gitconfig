@@ -9,7 +9,6 @@
   logallrefupdates = true
   ignorecase = false
   editor = mvim -v
-  pager = less -r
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
