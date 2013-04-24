@@ -14,7 +14,7 @@ Bundle "VimClojure"
 Bundle "sjl/gundo.vim"
 Bundle 'The-NERD-Commenter'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'ootoovak/vim-tomorrow-night'
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 Bundle 'altercation/vim-colors-solarized' 
 Bundle 'repos-scala/scala-vundle'
@@ -22,6 +22,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/buftabs'
 Bundle 'airblade/vim-gitgutter'
+Bundle "myusuf3/numbers.vim"
+Bundle "Lokaltog/vim-easymotion.git"
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
