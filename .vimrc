@@ -28,6 +28,7 @@ Bundle "Lokaltog/vim-easymotion.git"
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
+let g:EasyMotion_leader_key = '<Leader>'
 
 syntax on
 filetype plugin indent on
