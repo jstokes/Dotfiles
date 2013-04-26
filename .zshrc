@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-for file in ~/Dotfiles/env/.*
+for file in ~/env/.*
   do source "$file"
 done 
 
