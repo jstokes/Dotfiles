@@ -8,26 +8,17 @@ Bundle "git.zip"
 Bundle "fugitive.vim"
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
 Bundle "ack.vim"
-Bundle "VimClojure"
-Bundle "sjl/gundo.vim"
 Bundle 'The-NERD-Commenter'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
-Bundle 'altercation/vim-colors-solarized' 
-Bundle 'repos-scala/scala-vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'vim-scripts/buftabs'
-Bundle 'airblade/vim-gitgutter'
 Bundle "myusuf3/numbers.vim"
 Bundle "Lokaltog/vim-easymotion.git"
 
 " Settings for VimClojure
-let vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
-let vimclojure#ParenRainbow=1           " Rainbow parentheses'!
 let g:EasyMotion_leader_key = '<Leader>'
 
 syntax on
@@ -58,7 +49,7 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
 set clipboard=unnamed
-set guifont=Droid\ Sans\ Mono:h12
+set guifont=Droid\ Sans\ Mono\ for\ Powerline:h12
 set lispwords+=defpartial,defpage
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
@@ -75,11 +66,6 @@ augroup CommandTExtension
   autocmd FocusGained * CommandTFlush
   autocmd BufWritePost * CommandTFlush
 augroup END
-
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
 
 let mapleader=","
 let g:EclimCompletionMethod = 'omnifunc'
@@ -115,5 +101,4 @@ nnoremap ? ?\v
 vnoremap ? ?\v
 
 set background=dark
-let g:solarized_termtrans = 1
 colorscheme tomorrow-night-bright
