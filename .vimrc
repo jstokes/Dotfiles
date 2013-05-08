@@ -17,7 +17,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle "myusuf3/numbers.vim"
-Bundle "Lokaltog/vim-easymotion.git"
 
 " Settings for VimClojure
 let g:EasyMotion_leader_key = '<Leader>'
@@ -69,6 +68,15 @@ augroup CommandTExtension
   autocmd BufWritePost * CommandTFlush
 augroup END
 
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 let mapleader=","
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -101,6 +109,8 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
+map ,r :w\|:!echo "./bin/koans" > test-commands<cr>
 
 set background=dark
-colorscheme tomorrow-night-bright
+colorscheme tomorrow-night-eighties
+
