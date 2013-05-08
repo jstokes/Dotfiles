@@ -14,6 +14,7 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 Bundle 'scrooloose/syntastic'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle "myusuf3/numbers.vim"
 Bundle "Lokaltog/vim-easymotion.git"
@@ -57,6 +58,7 @@ set showcmd " Display an incomplete command in the lower right corner of the Vim
 set autoread " Read from file when it changes on the FS
 set backspace=2 
 set t_Co=256
+set timeout timeoutlen=100
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
 au BufRead,BufNewFile {COMMIT_EDITMSG}                                set ft=gitcommit
