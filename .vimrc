@@ -3,12 +3,12 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'git://git.wincent.com/command-t.git'
-Bundle "cucumber.zip"
-Bundle "git.zip"
-Bundle "fugitive.vim"
-Bundle "vim-ruby/vim-ruby"
+Bundle 'cucumber.zip'
+Bundle 'git.zip'
+Bundle 'fugitive.vim'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
-Bundle "ack.vim"
+Bundle 'ack.vim'
 Bundle 'The-NERD-Commenter'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'chriskempson/vim-tomorrow-theme'
@@ -16,7 +16,8 @@ Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
-Bundle "myusuf3/numbers.vim"
+Bundle 'myusuf3/numbers.vim'
+Bundle 'Lokaltog/vim-easymotion.git'
 
 " Settings for VimClojure
 let g:EasyMotion_leader_key = '<Leader>'
@@ -69,15 +70,6 @@ augroup CommandTExtension
   autocmd BufWritePost * CommandTFlush
 augroup END
 
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-
 let mapleader=","
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -114,4 +106,3 @@ map ,r :w\|:!echo "./bin/koans" > test-commands<cr>
 
 set background=dark
 colorscheme tomorrow-night-eighties
-
