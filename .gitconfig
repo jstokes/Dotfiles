@@ -32,6 +32,7 @@
   cb = checkout -b
   nmp = log head "^master" --pretty=oneline --no-merges
   nm = log head "^master" --no-merges
+  review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
 [color]
   ui = true
 [push]
