@@ -42,3 +42,7 @@ extract () {
 function fname() {  
   find . -iname "*$@*";
 }
+
+function f() {
+  grep -ir "$@" ./
+}
