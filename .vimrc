@@ -103,7 +103,11 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
-map ,r :w\|:!echo "./bin/koans" > test-commands<cr>
+map ,r :w\|Silent !echo "runhaskell %" > test-commands<cr>
+
+command! -nargs=1 Silent
+      \ | execute ':silent !'.<q-args>
+      \ | execute ':redraw!'
 
 set background=dark
 colorscheme tomorrow-night-eighties
