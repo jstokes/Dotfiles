@@ -10,12 +10,20 @@ function kill-tomcat() {
   ps aux | grep tomcat | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 }
 
-function findopen() {
-  find . | ack $1 | xargs mvim -v
+function fo() {
+  vi $(find `pwd` -iname $1 | grep -v 'build' | grep -v 'target')
 }
 
 function web-serve() {
   python -m SimpleHTTPServer 
+}
+
+function beep() {
+  args=("$@");
+  eval "$@"
+  exit_code=$?;
+  growlnotify --message "finished process $args with exit code $exit_code";
+  return exit_code;
 }
 
 extract () {
@@ -46,3 +54,30 @@ function fname() {
 function f() {
   grep -ir "$@" ./
 }
+
+function g-rom() {
+  git fetch
+  git add --all
+  git commit -m 'WIP'  
+  COMMITED=$?
+  git rebase origin/master
+# Remove the commit, but only if we created one previously
+  [[ $COMMITED -eq 0 ]] && git reset HEAD~1
+}
+
+function zshconfig() { vim ~/.zshrc }
+function so() { source ~/.zshrc }
+function ohmyzsh() { vim ~/.oh-my-zsh }
+function clr() { clear }
+function post-review() { post-review --guess-description -o }
+function mvnjr() { mvn jetty:run }
+function mvnci() { mvn clean install }
+function tmux-buffer-to-clipboard() { tmux save-buffer -|pbcopy }
+function tmux-buffer-from-clipboard() { tmux set-buffer $(pbpaste) }
+function gs() { echo IDIOT! }
+function g() { git }
+function subl() { subl -n }
+function bi() { bundle install }
+function be() { bundle exec }
+function jdk16() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.6) }
+function jdk17() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.7.0_21) }
