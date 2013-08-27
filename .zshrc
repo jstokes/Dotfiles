@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
 
-plugins=(vi-mode gitfast bundle gradle)
+plugins=(vi-mode gitfast bundle gradle grails)
 
 source $ZSH/oh-my-zsh.sh
 
