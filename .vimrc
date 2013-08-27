@@ -18,6 +18,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'Lokaltog/vim-easymotion.git'
+Bundle 'derekwyatt/vim-scala.git'
 
 " Settings for VimClojure
 let g:EasyMotion_leader_key = '<Leader>'
