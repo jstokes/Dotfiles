@@ -33,7 +33,10 @@
   nmp = log head "^master" --pretty=oneline --no-merges
   nm = log head "^master" --no-merges
   review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
+  dfc = diff --color-words
 [color]
   ui = true
 [push]
   default = current
+[help]
+  autocorrect = 1
