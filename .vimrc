@@ -16,8 +16,6 @@ Bundle 'topfunky/PeepOpen-EditorSupport', {'rtp': 'vim-peepopen/'}
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'Lokaltog/vim-easymotion.git'
 Bundle 'derekwyatt/vim-scala.git'
 
 " Settings for VimClojure
@@ -51,7 +49,7 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
 set clipboard=unnamed
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h12
+set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
 set lispwords+=defpartial,defpage
 set laststatus=2  " Always show status line.
 set ruler  " Show ruler
