@@ -5,7 +5,7 @@
 #alias clr='clear'
 #alias post-review="post-review --guess-description -o"
 #alias mvnjr="mvn jetty:run"
-#alias mvnci="mvn clean install"
+alias mvnci="mvn clean install"
 alias tmux="TERM=screen-256color-bce tmux"
 #alias tmux-buffer-to-clipboard='tmux save-buffer -|pbcopy'
 #alias tmux-buffer-from-clipboard='tmux set-buffer "$(pbpaste)"'
