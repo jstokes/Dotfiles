@@ -103,6 +103,7 @@ vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
 map ,r :w\|Silent !echo "runhaskell %" > test-commands<cr>
+map ,, :w\|Silent !echo "make test" > test-commands<cr> 
 
 command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
