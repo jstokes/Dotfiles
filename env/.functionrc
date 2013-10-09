@@ -26,6 +26,10 @@ function beep() {
   return exit_code;
 }
 
+function alertOn() {
+  grep $1 | while read line; do growlnotify --message "Hit! $line"; echo $line; done
+}
+
 extract () {
   if [ -f $1 ] ; then
     case $1 in
@@ -64,6 +68,10 @@ function g-rom() {
   git rebase origin/master
   [[ $COMMITED -eq 0 ]] && git reset HEAD~1
   popd
+}
+
+function ssh-copy-id() {
+  cat ~/.ssh/id_rsa.pub | ssh $1 "mkdir -p ~/.ssh/; cat >> ~/.ssh/authorized_keys"
 }
 
 function zshconfig() { vim ~/.zshrc }
