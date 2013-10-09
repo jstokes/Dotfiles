@@ -1,3 +1,4 @@
+#! /bin/sh
 if [ ! -p test-commands ]; then
   mkfifo test-commands
 fi
