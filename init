@@ -18,6 +18,9 @@ brew install bash-completition
 echo "installing git-flow"
 brew install git-flow
 
+echo "installing ag"
+brew install ag
+
 echo "installing gems"
 gem install git-smart
 gem install lunchy

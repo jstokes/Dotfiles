@@ -83,7 +83,6 @@ function mvnjr() { mvn jetty:run }
 function tmux-buffer-to-clipboard() { tmux save-buffer -|pbcopy }
 function tmux-buffer-from-clipboard() { tmux set-buffer $(pbpaste) }
 function gs() { echo IDIOT! }
-function g() { git }
 function subl() { subl -n }
 function bi() { bundle install }
 function be() { bundle exec }

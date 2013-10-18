@@ -2,5 +2,6 @@ alias mvnci="mvn clean install"
 alias tmux="TERM=screen-256color-bce tmux"
 alias vi='mvim -v'
 alias vil='mvim -v $(fc)'
+alias g='git'
 alias gr='grails'
 alias mux=tmuxinator
