@@ -1,8 +1,8 @@
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
+Bundle 'git@github.com:wincent/Command-T.git'
 Bundle 'gmarik/vundle'
-Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'cucumber.zip'
 Bundle 'git.zip'
 Bundle 'fugitive.vim'
@@ -111,3 +111,4 @@ command! -nargs=1 Silent
 
 set background=dark
 colorscheme tomorrow-night-eighties
+
