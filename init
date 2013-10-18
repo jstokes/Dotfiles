@@ -1,19 +1,6 @@
 #!/bin/bash
 cd ~/Dotfiles/
 
-#install rvm - and ruby 1.9.2
-echo "installing rvm and ruby 1.9.2"
-curl -L get.rvm.io | bash -s stable --rails
-(cd ~/.rvm/bin && rvm install 1.9.2)
-
-#install homebrew
-#echo "installing homebrew"
-#/usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
-
-#install git
-#echo "installing git"
-#brew install git
-
 #install tmux
 brew install tmux
 

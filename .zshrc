@@ -28,6 +28,7 @@ ZSH_THEME=""
 plugins=(vi-mode gitfast bundle gradle grails)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.bin/tmuxinator.zsh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 

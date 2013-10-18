@@ -1,23 +1,6 @@
-#alias lazytest='java -cp "src:test:lib/*:lib/dev/*" lazytest.watch src test'
-#alias zshconfig="vim ~/.zshrc"
-#alias so="source ~/.zshrc"
-#alias ohmyzsh="vim ~/.oh-my-zsh"
-#alias clr='clear'
-#alias post-review="post-review --guess-description -o"
-#alias mvnjr="mvn jetty:run"
 alias mvnci="mvn clean install"
 alias tmux="TERM=screen-256color-bce tmux"
-#alias tmux-buffer-to-clipboard='tmux save-buffer -|pbcopy'
-#alias tmux-buffer-from-clipboard='tmux set-buffer "$(pbpaste)"'
-#alias gs="echo IDIOT!"
-#alias subl='subl -n'
-#alias tm='ps aux | grep'
 alias vi='mvim -v'
 alias vil='mvim -v $(fc)'
-#alias bi='bundle install'
-#alias be='bundle exec'
-#alias jdk16='export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)'
-#alias jdk17='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7.0_21)'
-#alias rebuild='gw clean -x test && gw build -x test && gw install -x test; echo "\a"'
-#alias reset-cspg='dropdb "wg_curriculum"; psql -d postgres -c "create database wg_curriculum with owner = cspguser"'
-alias ll='git status -s 2>&1 > /dev/null && ls -alH'
+alias gr='grails'
+alias mux=tmuxinator
