@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ~/Dotfiles/
 
 #install tmux
 brew install tmux
@@ -7,8 +6,23 @@ brew install tmux
 echo "installing reattach-to-user-namespace"
 brew install reattach-to-user-namespace
 
+echo "installing newer ruby"
+brew install ruby
+
 echo "updating vim"
-brew install https://raw.github.com/AndrewVos/homebrew-alt/master/duplicates/vim.rb
+brew install macvim
+
+echo "installing bash completition"
+brew install bash-completition
+
+echo "installing git-flow"
+brew install git-flow
+
+echo "installing gems"
+gem install git-smart
+gem install lunchy
+gem install terminal-notifier
+gem install tmuxinator
 
 echo "installing vundle"
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
