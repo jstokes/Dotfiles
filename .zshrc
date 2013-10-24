@@ -34,6 +34,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 source ~/.zsh/git-prompt/zshrc.sh
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/jstokes/.gvm/bin/gvm-init.sh" ]] && source "/Users/jstokes/.gvm/bin/gvm-init.sh"
