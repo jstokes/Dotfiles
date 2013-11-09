@@ -11,11 +11,17 @@ let g:dotvim_settings.autocomplete_method = 'ycm'
 " alternatively, you can set this variable to load exactly what you want
 let g:dotvim_settings.plugin_groups = [ 'core', 'unite', 'misc', 'indents', 'scm', 'autocomplete', 'ruby', 'javascript', 'web', 'editing' ]
 
+
 " finally, load the distribution
 source ~/.vim/vimrc
 
 " anything defined here are simply overrides
+au BufNewFile,BufRead [vV]agrantfile        set filetype=ruby
 set clipboard=unnamed
+set nolist
+set novisualbell  " No blinking
+set noerrorbells  " No noise.
+set vb t_vb=".
 let g:EclimCompletionMethod = 'omnifunc'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
