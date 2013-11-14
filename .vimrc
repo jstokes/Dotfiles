@@ -15,6 +15,12 @@ let g:dotvim_settings.plugin_groups = [ 'core', 'unite', 'misc', 'indents', 'scm
 " finally, load the distribution
 source ~/.vim/vimrc
 
+NeoBundle 'jszakmeister/vim-togglecursor'
+let g:togglecursor_default = "block"
+let g:togglecursor_insert = "underline"
+let g:togglecursor_leave = "underline"
+let g:togglecursor_disable_tmux = 0
+
 " anything defined here are simply overrides
 au BufNewFile,BufRead [vV]agrantfile        set filetype=ruby
 set clipboard=unnamed
