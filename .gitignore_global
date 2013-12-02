@@ -36,6 +36,9 @@ Thumbs.db
 #################
 .metadata
 
+# Maven Files #
+###############
+target/
 
 # Vim Files       #
 ##################
