@@ -9,6 +9,7 @@
   logallrefupdates = true
   ignorecase = false
   editor = mvim -v
+	autocrlf = input
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
