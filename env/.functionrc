@@ -84,7 +84,5 @@ function tmux-buffer-to-clipboard() { tmux save-buffer -|pbcopy }
 function tmux-buffer-from-clipboard() { tmux set-buffer $(pbpaste) }
 function gs() { echo IDIOT! }
 function subl() { subl -n }
-function bi() { bundle install }
-function be() { bundle exec }
 function jdk16() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.6) }
 function jdk17() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.7.0_21) }
