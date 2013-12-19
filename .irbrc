@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'interactive_editor'
 require 'irb/completion'
-require 'pp'
+require 'ap'
 
 if RUBY_ENGINE == 'ruby' 
   require 'wirble'
