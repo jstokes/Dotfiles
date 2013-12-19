@@ -21,6 +21,9 @@ brew install git-flow
 echo "installing ag"
 brew install ag
 
+echo "installing tree"
+brew install tree
+
 echo "installing gems"
 gem install git-smart
 gem install lunchy
