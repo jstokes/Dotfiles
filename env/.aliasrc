@@ -7,3 +7,5 @@ alias gr='grails'
 alias mux=tmuxinator
 alias bi='bundle install'
 alias be='bundle exec'
+alias tempc='git add --all && git commit -m "Temp"'
+
