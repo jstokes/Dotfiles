@@ -16,6 +16,7 @@ let g:dotvim_settings.plugin_groups = [ 'core', 'unite', 'misc', 'indents', 'scm
 source ~/.vim/vimrc
 
 NeoBundle 'jszakmeister/vim-togglecursor'
+NeoBundle 'Keithbsmiley/investigate.vim.git'
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"
 let g:togglecursor_leave = "underline"
@@ -28,9 +29,12 @@ set nolist
 set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
+set wildmode=longest:full
+map ; :
 let g:EclimCompletionMethod = 'omnifunc'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#eclim#enabled = 1
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>', '<Tab>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>', '<S-Tab>']
+nnoremap <silent> <leader>gb :Gblame -w<CR>
