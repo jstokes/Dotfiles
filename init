@@ -15,6 +15,13 @@ brew install ruby
 echo "updating vim"
 brew install macvim
 
+echo "installing emacs"
+brew install emacs
+
+echo "installing bling emacs"
+git clone git@github.com:bling/dotemacs.git ~/.emacs.d
+git clone git@github.com:bling/dotvim.git ~/.vim
+
 echo "installing bash completition"
 brew install bash-completition
 
@@ -24,8 +31,36 @@ brew install git-flow
 echo "installing ag"
 brew install ag
 
+echo "installing cmake"
+brew install cmake
+
 echo "installing tree"
 brew install tree
+
+echo "installing maven"
+brew install maven
+
+echo "installing wget"
+brew install wget
+
+echo "downloading tmuxinator.zsh"
+wget https://raw.github.com/aziz/tmuxinator/master/completion/tmuxinator.zsh > ~/.bin/tmuxinator.zsh
+
+echo "installing brew-cask"
+brew tap phinze/cask
+brew install brew-cask
+
+echo "installing chrome"
+brew cask install google-chrome
+
+echo "installing dropbox"
+brew cask install dropbox
+
+echo "installing google drive"
+brew cask install google-drive
+
+echo "installing hipchat"
+brew cask install hipchat
 
 echo "installing gems"
 gem install git-smart
@@ -33,8 +68,20 @@ gem install lunchy
 gem install terminal-notifier
 gem install tmuxinator
 
+echo "moving git status py"
+mkdir -p ~/.zsh/git-prompt
+cp gitstatus.py ~/.zsh/git-prompt/gitstatus.py
+mkdir -p ~/.bin
+cp tmuxinator.zsh ~/.bin/tmuxinator.zsh
+
+echo "installing bling vim"
+git clone git@github.com:bling/dotvim.git ~/.vim
+
 echo "installing vundle"
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+echo "installing neobundle"
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
 echo "installing oh-my-zsh"
 ./installer/oh-my-zsh.install
