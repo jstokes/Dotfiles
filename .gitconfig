@@ -1,6 +1,6 @@
 [user]
-  name = Jeff Stokes
-  email = jeffecu88@gmail.com
+	name = Jeff Stokes
+	email = jstokes@appia.com
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0
