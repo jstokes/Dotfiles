@@ -1,0 +1,14 @@
+if ps aux | grep -v grep | grep -q tmux_clipboard; then
+   echo "tmux clipboard already started"
+else
+   echo "starting tmux clipboard"
+   nohup sh ~/.tmux_clipboard.sh > /dev/null 2>&1 &
+fi
+
+
+if ps aux | grep -v grep | grep -q eclim; then
+   echo "elcim already started"
+else
+    echo "starting eclim"
+    nohup /Applications/eclipse/eclimd > /dev/null 2>&1 &
+fi
