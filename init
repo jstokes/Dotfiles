@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#install tmux
+# install brew
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+echo "installing brew"
 brew install tmux
 
 echo "installing reattach-to-user-namespace"
