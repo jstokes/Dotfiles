@@ -33,3 +33,4 @@ source ~/.bin/tmuxinator.zsh
 source ~/.zsh/git-prompt/zshrc.sh
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
+source ~/.fzf.zsh
