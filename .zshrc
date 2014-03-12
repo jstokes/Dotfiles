@@ -4,21 +4,28 @@ for file in ~/env/.*
   do if [[ $file != *.swp* ]] then
     source "$file"
   fi
-done 
+done
 
 autoload -U colors
 colors
 
-bindkey -v
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M vicmd " " fzf-history-widget
+bindkey -M vicmd "/" fzf-history-widget
+bindkey -M vicmd "^P" fzf-file-widget
+bindkey -M viins "^P" fzf-file-widget
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 export EDITOR='mvim -v'
 zstyle ':completion:*' hosts off
+
+#rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export RBENV_ROOT=/usr/local/var/rbenv
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
