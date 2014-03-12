@@ -50,3 +50,8 @@ target/
 *.project
 *.buildpath
 .bundle/
+
+tags
+*.org
+
+.nrepl-port
