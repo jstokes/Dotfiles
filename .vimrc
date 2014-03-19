@@ -17,6 +17,8 @@ source ~/.vim/vimrc
 
 NeoBundle 'jszakmeister/vim-togglecursor'
 NeoBundle 'Keithbsmiley/investigate.vim.git'
+NeoBundle 'jceb/vim-orgmode'
+
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"
 let g:togglecursor_leave = "underline"
@@ -24,6 +26,7 @@ let g:togglecursor_disable_tmux = 0
 
 " anything defined here are simply overrides
 au BufNewFile,BufRead [vV]agrantfile        set filetype=ruby
+au BufNewFile,BufRead *.org                 set filetype=org
 set clipboard=unnamed
 set nolist
 set novisualbell  " No blinking
