@@ -22,6 +22,8 @@ NeoBundle 'tpope/vim-classpath'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'ecomba/vim-ruby-refactoring'
 NeoBundle 'ngmy/vim-rubocop'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-sleuth'
 
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"
