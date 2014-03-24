@@ -33,6 +33,7 @@ Thumbs.db
 # Maven Files #
 ###############
 target/
+out/
 
 # Vim Files       #
 ##################
