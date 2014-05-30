@@ -1,5 +1,7 @@
 let g:dotvim_settings = {}
 let g:dotvim_settings.version = 1
+let vimpager_passthrough = 1
+let vimpager_scrolloff = 5 
 
 " here are some basic customizations, please refer to the top of the vimrc
 " file for all possible options
@@ -24,6 +26,8 @@ NeoBundle 'ecomba/vim-ruby-refactoring'
 NeoBundle 'ngmy/vim-rubocop'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'Slava/vim-colors-tomorrow'
+NeoBundle 'derekwyatt/vim-scala'
 
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"
