@@ -1,3 +1,5 @@
+/* vim: set filetype=sh : */ 
+
 function kill-jetty() {
   ps aux | grep jetty:run | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 }
@@ -28,6 +30,21 @@ function beep() {
 
 function alertOn() {
   grep $1 | while read line; do growlnotify --message "Hit! $line"; echo $line; done
+}
+
+function logs() {
+  server=$1
+  ssh -t $server "cd /usr/share/jboss-as/standalone/log; bash"
+}
+
+function cbt() {
+  if [ -f 'build.gradle' ]; then
+    ./gradlew clean build test
+  elif [ -f 'pom.xml' ]; then
+    mvn clean clean install 
+  else
+    echo "Don't know how to build in this directory!"
+  fi
 }
 
 extract () {
