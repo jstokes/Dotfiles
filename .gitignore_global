@@ -55,4 +55,6 @@ out/
 tags
 *.org
 
+*.reviewboardrc
+
 .nrepl-port
