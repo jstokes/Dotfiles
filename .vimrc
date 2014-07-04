@@ -37,6 +37,8 @@ let g:togglecursor_disable_tmux = 0
 " anything defined here are simply overrides
 au BufNewFile,BufRead [vV]agrantfile        set filetype=ruby
 au BufNewFile,BufRead *.org                 set filetype=org
+au BufNewFile,BufRead *.scala               set filetype=scala
+
 set clipboard=unnamed
 set nolist
 set novisualbell  " No blinking
@@ -50,9 +52,19 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#eclim#enabled = 1
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>', '<Tab>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>', '<S-Tab>']
-let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'rubylint']
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop', 'rubylint']
+let g:syntastic_ruby_checkers = []
 nnoremap <silent> <leader>gb :Gblame -w<CR>
 set timeoutlen=500
+" 
+" Run currently open cucumber feature file
+map <Leader>ct :w<cr>:!cucumber %<cr>
+ 
+" Run current cucumber scenario
+map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
+
+" redraw to hopefully help artifacting
+au BufWritePost * :silent! :syntax sync fromstart<cr>:redraw!<cr>
 
 " Close buffer without killing split
 nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR> 

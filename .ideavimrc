@@ -1,0 +1,23 @@
+map ; :
+set clipboard=unnamed
+set novisualbell  " No blinking
+set wildmode=longest:full
+set noerrorbells  " No noise.
+
+nnoremap <left> :bprev<CR>
+nnoremap <right> :bnext<CR>
+nnoremap <up> :tabnext<CR>
+nnoremap <down> :tabprev<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+
+inoremap jk <esc>
+inoremap kj <esc>
+nnoremap Y y$
+
+set visualbell
+

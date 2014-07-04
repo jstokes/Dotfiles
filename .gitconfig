@@ -1,6 +1,6 @@
 [user]
-	name = Jeff Stokes
-	email = jstokes@appia.com
+  name = Jeff Stokes
+  email = jstokes@appia.com
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0
@@ -29,7 +29,8 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit 
   rh = reset --hard
-  m = merge
+  m = smart-merge
+  l = smart-log
   cb = checkout -b
   nmp = log head "^master" --pretty=oneline --no-merges
   nm = log head "^master" --no-merges

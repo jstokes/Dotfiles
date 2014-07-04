@@ -4,11 +4,3 @@ else
    echo "starting tmux clipboard"
    nohup sh ~/.tmux_clipboard.sh > /dev/null 2>&1 &
 fi
-
-
-if pgrep -fq eclim; then
-   echo "elcim already started"
-else
-    echo "starting eclim"
-    nohup /Applications/eclipse/eclimd > /dev/null 2>&1 &
-fi

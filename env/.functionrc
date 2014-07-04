@@ -1,5 +1,4 @@
-/* vim: set filetype=sh : */ 
-
+# vim: set filetype=sh : 
 function kill-jetty() {
   ps aux | grep jetty:run | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 }
@@ -39,11 +38,11 @@ function logs() {
 
 function cbt() {
   if [ -f 'build.gradle' ]; then
-    ./gradlew clean build test
+    beep ./gradlew clean build test
   elif [ -f 'pom.xml' ]; then
-    mvn clean clean install 
+    beep mvn clean clean install 
   else
-    echo "Don't know how to build in this directory!"
+    beep echo "Don't know how to build in this directory!"
   fi
 }
 
