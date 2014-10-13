@@ -8,8 +8,8 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-  editor = mvim -v
-	autocrlf = input
+  editor = emacsclient -t
+  autocrlf = input
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^

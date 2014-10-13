@@ -13,12 +13,8 @@ bindkey -M viins "^P" fzf-file-widget
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-export EDITOR='mvim -v'
+export EDITOR='emacsclient -t'
 zstyle ':completion:*' hosts off
-
-#rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export RBENV_ROOT=/usr/local/var/rbenv
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -34,3 +30,13 @@ source ~/.zsh/git-prompt/zshrc.sh
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 source ~/.fzf.zsh
+
+for file in ~/env/.*
+  do if [[ $file != *.swp*  ]] then
+    source "$file"
+  fi
+done
+
+#rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export RBENV_ROOT=/usr/local/var/rbenv
