@@ -8,8 +8,9 @@ current_dir = File.expand_path(Dir.pwd)
 links = `git ls-tree --name-only HEAD`.lines.map(&:strip).select {|x| !ignored.include?(x)  }
 
 def different_locations
-  {'personal' => '/Users/jstokes/.emacs.d/personal',
-   'prelude-modules.el' => '/Users/jstokes/.emacs.d/prelude-modules.el'}
+  me = `whoami`.chomp
+  {'personal' => "/Users/#{me}/.emacs.d/personal",
+   'prelude-modules.el' => "/Users/#{me}/.emacs.d/prelude-modules.el"}
 end
 
 def get_symlink(file_name)
@@ -25,10 +26,5 @@ links.each do |link|
   symlink = get_symlink(link)
   link = File.join(current_dir, link)
 
-  if File.exists?(symlink)
-    File.rename(symlink, "#{symlink}.bak")
-  end
-
-  puts "ln -ns #{link} #{symlink}"
-  `ln -ns #{link} #{symlink}`
+  `ln -nsFv #{link} #{symlink}`
 end
