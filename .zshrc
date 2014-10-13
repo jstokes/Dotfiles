@@ -21,8 +21,6 @@ COMPLETION_WAITING_DOTS="true"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
 
-plugins=(heroku colorize vagrant brew gitfast git-flow vi-mode bundle gradle grails)
-
 source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
 
