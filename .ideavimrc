@@ -4,10 +4,21 @@ set novisualbell  " No blinking
 set wildmode=longest:full
 set noerrorbells  " No noise.
 
+" Kill window
+nnoremap Q :q<cr>
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
+
 nnoremap <left> :bprev<CR>
 nnoremap <right> :bnext<CR>
 nnoremap <up> :tabnext<CR>
 nnoremap <down> :tabprev<CR>
+set hlsearch
 
 vnoremap < <gv
 vnoremap > >gv
@@ -17,7 +28,10 @@ nnoremap <silent> k gk
 
 inoremap jk <esc>
 inoremap kj <esc>
+inoremap <esc> <esc>
+
+noremap <CR> :
+
 nnoremap Y y$
 
 set visualbell
-
