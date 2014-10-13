@@ -58,3 +58,5 @@ tags
 *.reviewboardrc
 
 .nrepl-port
+
+.gitconfig
