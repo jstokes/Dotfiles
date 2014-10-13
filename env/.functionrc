@@ -19,6 +19,21 @@ function web-serve() {
   python -m SimpleHTTPServer 
 }
 
+function tcurl() {
+  curl -w "@/Users/jstokes/Developer/curl-format.txt" -o /dev/null -s $@
+}
+
+function finish() {
+  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org" 
+  done=/Users/jstokes/Dropbox/org/work/done
+  mv $orgfile $done
+}
+
+function start() {
+  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org" 
+  touch $orgfile
+}
+
 function beep() {
   args=("$@");
   eval "$@"

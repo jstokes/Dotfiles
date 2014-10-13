@@ -1,7 +1,7 @@
 alias mvnci="mvn clean install"
 alias mvnt="mvn test"
 alias tmux="TERM=screen-256color-bce tmux"
-alias vi='mvim -v'
+alias vi='vim'
 alias vil='mvim -v $(fc)'
 alias g='git'
 alias gr='grails'
@@ -12,3 +12,7 @@ alias tempc='git add --all && git commit -m "Temp"'
 alias gw='./gradlew'
 alias gwcbt='./gradlew clean build test'
 alias rm='rm -i'
+alias e='emacsclient -t'
+alias ec='emacsclient -c'
+alias vim='emacsclient -t'
+alias vi='emacsclient -t'
