@@ -55,9 +55,11 @@ function cbt() {
   if [ -f 'build.gradle' ]; then
     beep ./gradlew clean build test
   elif [ -f 'pom.xml' ]; then
-    beep mvn clean clean install 
+    beep mvn clean install 
+  elif [ -f 'build.sbt' ]; then
+    beep sbt clean compile test
   else
-    beep echo "Don't know how to build in this directory!"
+    beep echo "Don\'t know how to build in this directory!"
   fi
 }
 
