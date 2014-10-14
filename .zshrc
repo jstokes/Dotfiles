@@ -32,7 +32,7 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 source ~/.fzf.zsh
 
 for file in ~/env/.*
-  do if [[ $file != *.swp*  ]] then
+  do if [[ $file != *.#.*  ]] then
     source "$file"
   fi
 done
