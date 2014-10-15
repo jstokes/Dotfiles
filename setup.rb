@@ -9,8 +9,7 @@ links = `git ls-tree --name-only HEAD`.lines.map(&:strip).select {|x| !ignored.i
 
 def different_locations
   me = `whoami`.chomp
-  {'personal' => "/Users/#{me}/.emacs.d/personal",
-   'prelude-modules.el' => "/Users/#{me}/.emacs.d/prelude-modules.el"}
+  {'jstokes-pack' => "/Users/#{me}/.live-packs/jstokes-pack"}
 end
 
 def get_symlink(file_name)
