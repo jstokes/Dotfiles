@@ -1,11 +1,5 @@
 ;; Place your bindings here.
 
-;; For example:
-;;(define-key global-map (kbd "C-+") 'text-scale-increase)
-;;(define-key global-map (kbd "C--") 'text-scale-decrease)
-
-(setq evil-want-C-u-scroll t)
-
 ; https://gist.github.com/txus/5420665
 ; map jk to ESC
 (define-key evil-insert-state-map "j" #'cofi/maybe-exit)
@@ -30,6 +24,15 @@
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+
+
 (define-key evil-normal-state-map (kbd "+") 'er/expand-region)
 (define-key evil-visual-state-map (kbd "x") 'er/expand-region)
 (define-key evil-visual-state-map (kbd "X") 'er/contract-region)
+
+(setq
+ evil-want-C-u-scroll t
+ undo-tree-auto-save-history t
+ undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/undo/"))))
