@@ -33,6 +33,31 @@
 (define-key evil-visual-state-map (kbd "X") 'er/contract-region)
 
 (setq
- evil-want-C-u-scroll t
- undo-tree-auto-save-history t
- undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/undo/"))))
+  nrepl-hide-special-buffers t
+  cider-prompt-save-file-on-load nil
+  evil-want-C-u-scroll t
+  undo-tree-auto-save-history t
+  undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/undo/"))))
+
+(defun cider-reset-test-run-tests ()
+  (interactive)
+  (cider-load-current-buffer)
+  (cider-test-run-tests))
+
+(global-evil-leader-mode)
+
+(evil-leader/set-leader "SPC")
+
+(evil-leader/set-key-for-mode 'cider-mode
+  "t" 'cider-reset-test-run-tests
+  "e" 'cider-repl-reset
+  "n" 'cider-repl-set-ns
+  "k" 'cider-load-current-buffer
+  "c" 'cider-eval-defun-at-point
+  "d" 'cider-doc-map
+  "r" 'cider-switch-to-repl-buffer)
+
+(evil-leader/set-key
+  "f" 'ido-find-file
+  "b" 'ido-switch-buffer
+  "d" 'describe-function)
