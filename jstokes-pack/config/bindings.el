@@ -101,3 +101,11 @@
   "d" 'describe-function
   "-" 'text-scale-descrease
   "+" 'text-scale-increase)
+
+(require 'flx-id)
+(ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
