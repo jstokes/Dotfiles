@@ -1,3 +1,4 @@
 .slirc
 .appiarc
 .hashrc
+*.elc

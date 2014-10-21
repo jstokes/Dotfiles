@@ -32,6 +32,40 @@
 (define-key evil-visual-state-map (kbd "x") 'er/expand-region)
 (define-key evil-visual-state-map (kbd "X") 'er/contract-region)
 
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
+(define-key evil-visual-state-map (kbd ";") 'evil-ex)
+
+(set-face-attribute 'default nil :height 150)
+
+(defun save-all ()
+  (interactive)
+  (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+
+(defun my-evil-modeline-change (default-color)
+  "changes the modeline color when the evil mode changes"
+  (let ((color (cond ((evil-insert-state-p) '("#002233" . "#ffffff"))
+                     ((evil-visual-state-p) '("#330022" . "#ffffff"))
+                     ((evil-normal-state-p) default-color)
+                     (t '("#440000" . "#ffffff")))))
+    (set-face-background 'mode-line (car color))
+    (set-face-foreground 'mode-line (cdr color))))
+
+(lexical-let ((default-color (cons (face-background 'mode-line)
+                                   (face-foreground 'mode-line))))
+  (add-hook 'post-command-hook (lambda () (my-evil-modeline-change default-color))))
+
+(setq evil-emacs-state-cursor '("red" box))
+(setq evil-normal-state-cursor '("green" box))
+(setq evil-visual-state-cursor '("orange" box))
+(setq evil-insert-state-cursor '("red" bar))
+(setq evil-replace-state-cursor '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
+
+(setq-local interprogram-cut-function nil)
+(setq-local interprogram-paste-function nil)
+
 (setq
   nrepl-hide-special-buffers t
   cider-prompt-save-file-on-load nil
@@ -58,6 +92,12 @@
   "r" 'cider-switch-to-repl-buffer)
 
 (evil-leader/set-key
-  "f" 'ido-find-file
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit
+  "q" 'evil-delete-buffer
+  "w" 'save-all
+  "f" 'find-file-in-project
   "b" 'ido-switch-buffer
-  "d" 'describe-function)
+  "d" 'describe-function
+  "-" 'text-scale-descrease
+  "+" 'text-scale-increase)

@@ -5,7 +5,7 @@ let vimpager_scrolloff = 5
 
 " here are some basic customizations, please refer to the top of the vimrc
 " file for all possible options
-let g:dotvim_settings.autocomplete_method = 'ycm'
+" let g:dotvim_settings.autocomplete_method = 'ycm'
 
 " by default, language specific plugins are not loaded.  this can be changed with the following:
 " let g:dotvim_settings.plugin_groups_exclude = ['ruby','python']
