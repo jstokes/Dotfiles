@@ -78,31 +78,41 @@
   (cider-load-current-buffer)
   (cider-test-run-tests))
 
-(global-evil-leader-mode)
 
 (evil-leader/set-leader "SPC")
 
-(evil-leader/set-key-for-mode 'cider-mode
-  "t" 'cider-reset-test-run-tests
-  "e" 'cider-repl-reset
-  "n" 'cider-repl-set-ns
-  "k" 'cider-load-current-buffer
-  "c" 'cider-eval-defun-at-point
-  "d" 'cider-doc-map
-  "r" 'cider-switch-to-repl-buffer)
+(evil-leader/set-key-for-mode 'clojure-mode
+  "a"  'clojure-jump-between-tests-and-code
+  "d"  'cider-doc-map
+  "t"  'clojure-test-run-test
+  "T"  'clojure-test-run-test
+  "e"  'cider-eval-defun-at-point
+  "n"  'cider-repl-set-ns
+  "k"  'cider-load-current-buffer
+  "cq" 'cider-quit
+  "cc" 'cider-connect
+  "cj" 'cider-jack-in
+  "cq" 'cider-quit
+  "re" 'cider-switch-to-repl-buffer
+  "rs" 'cljr-sort-ns
+  "rr" 'cljr-add-require-to-ns
+  "ru" 'cljr-add-use-to-ns)
 
 (evil-leader/set-key
   "s" 'evil-window-split
   "v" 'evil-window-vsplit
   "q" 'evil-delete-buffer
-  "w" 'save-all
+  "w" 'save-buffer
+  "e" 'eval-defun
   "f" 'find-file-in-project
   "b" 'ido-switch-buffer
   "d" 'describe-function
-  "-" 'text-scale-descrease
+  "-" 'text-scale-decrease
   "+" 'text-scale-increase)
 
-(require 'flx-id)
+(global-evil-leader-mode)
+
+(require 'flx-ido)
 (ido-mode t)
 (ido-everywhere t)
 (flx-ido-mode t)
