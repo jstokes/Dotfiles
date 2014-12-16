@@ -1,4 +1,4 @@
-# vim: set filetype=sh : 
+# vim: set filetype=sh
 function kill-jetty() {
   ps aux | grep jetty:run | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 }
@@ -16,7 +16,7 @@ function fo() {
 }
 
 function web-serve() {
-  python -m SimpleHTTPServer 
+  python -m SimpleHTTPServer
 }
 
 function tcurl() {
@@ -24,17 +24,17 @@ function tcurl() {
 }
 
 function finish() {
-  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org" 
+  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org"
   done=/Users/jstokes/Dropbox/org/work/done
   mv $orgfile $done
 }
 
 function start() {
-  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org" 
+  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org"
   touch $orgfile
 }
 
-function beep() {
+beep() {
   args=("$@");
   eval "$@"
   exit_code=$?;
@@ -53,13 +53,14 @@ function logs() {
 
 function cbt() {
   if [ -f 'build.gradle' ]; then
-    beep ./gradlew clean build test
+    ./gradlew clean build test
   elif [ -f 'pom.xml' ]; then
-    beep mvn clean install 
+    mvn clean install
   elif [ -f 'build.sbt' ]; then
-    beep sbt clean compile test
+    sbt clean compile test
   else
-    beep echo "Don\'t know how to build in this directory!"
+
+  echo "Don\'t know how to build in this directory!"
   fi
 }
 
@@ -84,7 +85,7 @@ extract () {
   fi
 }
 
-function fname() {  
+function fname() {
   find . -iname "*$@*";
 }
 
@@ -95,7 +96,7 @@ function f() {
 function g-rom() {
   git fetch
   cd `git rev-parse --show-toplevel`
-  git add --all 
+  git add --all
   git commit -m 'WIP'
   COMMITED=$?
   git rebase origin/master

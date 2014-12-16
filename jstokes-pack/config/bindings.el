@@ -1,4 +1,6 @@
-;; Place your bindings here.
+;; ;; Place your bindings here.
+
+(live-set-default-font "M+ 1mn 15")
 
 ; https://gist.github.com/txus/5420665
 ; map jk to ESC
@@ -35,13 +37,13 @@
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-visual-state-map (kbd ";") 'evil-ex)
 
-(set-face-attribute 'default nil :height 150)
 
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
 
 (add-hook 'focus-out-hook 'save-all)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defun my-evil-modeline-change (default-color)
   "changes the modeline color when the evil mode changes"
@@ -67,23 +69,23 @@
 (setq-local interprogram-paste-function nil)
 
 (setq
-  nrepl-hide-special-buffers t
-  cider-prompt-save-file-on-load nil
-  evil-want-C-u-scroll t
-  undo-tree-auto-save-history t
-  undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/undo/"))))
+ cider-repl-pop-to-buffer-on-connect nil
+ nrepl-hide-special-buffers t
+ cider-prompt-save-file-on-load nil
+ evil-want-C-u-scroll t
+ undo-tree-auto-save-history t
+ undo-tree-history-directory-alist (quote (("." . "~/.emacs.d/undo/"))))
 
 (defun cider-reset-test-run-tests ()
   (interactive)
   (cider-load-current-buffer)
   (cider-test-run-tests))
 
-
 (evil-leader/set-leader "SPC")
 
 (evil-leader/set-key-for-mode 'clojure-mode
   "a"  'clojure-jump-between-tests-and-code
-  "d"  'cider-doc-map
+  "d"  'ac-nrepl-popup-doc
   "t"  'clojure-test-run-test
   "T"  'clojure-test-run-test
   "e"  'cider-eval-defun-at-point
@@ -101,21 +103,42 @@
 (evil-leader/set-key
   "s" 'evil-window-split
   "v" 'evil-window-vsplit
-  "q" 'evil-delete-buffer
+  "q" 'delete-window
+  "db" 'evil-delete-buffer
+  "df" 'describe-function
+  "dw" 'delete-window
   "w" 'save-buffer
   "e" 'eval-defun
+  "lb" 'eval-buffer
   "f" 'find-file-in-project
   "b" 'ido-switch-buffer
-  "d" 'describe-function
+  "n" 'evil-next-buffer
+  "N" 'evil-prev-buffer
+  "B" 'ido-switch-buffer-other-window
+  "g" 'magit-status
+  "G" 'magit-blame-mode
   "-" 'text-scale-decrease
   "+" 'text-scale-increase)
 
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+    In Delete Selection mode, if the mark is active, just deactivate it;
+    then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+
+(ac-set-trigger-key "TAB")
+
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
 (global-evil-leader-mode)
 
-(require 'flx-ido)
-(ido-mode t)
-(ido-everywhere t)
-(flx-ido-mode t)
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
+(find-file "~/.live-packs/jstokes-pack/config/bindings.el")

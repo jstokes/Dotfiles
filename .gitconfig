@@ -13,11 +13,11 @@
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
-  pl = smart-pull 
+  pl = smart-pull
   ph = push
   st = status -s
   co = checkout
-  ci = commit
+  ci = commit -v
   br = branch
   df = diff
   dfs = diff --stat
@@ -27,7 +27,7 @@
   ai = add -i
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit 
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   rh = reset --hard
   m = smart-merge
   l = smart-log

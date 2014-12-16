@@ -60,3 +60,5 @@ tags
 .nrepl-port
 
 .gitconfig
+
+worksheet.sc

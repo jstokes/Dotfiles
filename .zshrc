@@ -21,10 +21,12 @@ COMPLETION_WAITING_DOTS="true"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
 
-plugins=(colorize vagrant brew gitfast git-flow vi-mode bundle gradle)
+plugins=(colorize vagrant brew gitfast git-flow vi-mode bundle gradle maven)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
+source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. `brew --prefix`/etc/profile.d/z.sh
 
 source ~/.zsh/git-prompt/zshrc.sh
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
@@ -40,3 +42,4 @@ done
 #rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
+rbenv global 1.9.3-p547
