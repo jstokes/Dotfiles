@@ -63,3 +63,7 @@ tags
 
 *.sc
 vendor/
+
+.ensime
+.ensime_cache/
+.projectile
