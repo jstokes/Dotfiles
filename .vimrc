@@ -48,7 +48,7 @@ set novisualbell  " No blinking
 set noerrorbells  " No noise.
 set vb t_vb=".
 set wildmode=longest:full
-set wildignore+=*/out/**
+" set wildignore+=*/out/**
 map ; :
 let g:EclimCompletionMethod = 'omnifunc'
 let g:airline#extensions#tabline#enabled = 1
@@ -90,11 +90,11 @@ map <Leader>ct :w<cr>:!cucumber %<cr>
 map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".") . " ENVIRONMENT=local"<cr>
 
 " redraw to hopefully help artifacting
-au BufWritePost * :silent! :syntax sync fromstart<cr>:redraw!<cr>
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" au BufWritePost * :silent! :syntax sync fromstart<cr>:redraw!<cr>
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 " Save when losing focus
 au FocusLost * :silent! wall
 " Resize splits when the window is resized

@@ -61,4 +61,5 @@ tags
 
 .gitconfig
 
-worksheet.sc
+*.sc
+vendor/

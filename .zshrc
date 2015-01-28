@@ -2,9 +2,10 @@
 autoload -U colors
 colors
 
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
-bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M vicmd " " fzf-history-widget
 bindkey -M vicmd "/" fzf-history-widget
 bindkey -M vicmd "^P" fzf-file-widget
@@ -26,7 +27,6 @@ plugins=(colorize vagrant brew gitfast git-flow vi-mode bundle gradle maven)
 source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
 source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. `brew --prefix`/etc/profile.d/z.sh
 
 source ~/.zsh/git-prompt/zshrc.sh
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '

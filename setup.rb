@@ -2,7 +2,7 @@
 # setup.rb
 
 #list of dirs which you don't want to symlink
-ignored = %w(.gitignore .gitmodules setup.rb README init installer)
+ignored = %w(.gitignore .gitmodules setup.rb README init installer .live-packs)
 
 current_dir = File.expand_path(Dir.pwd)
 links = `git ls-tree --name-only HEAD`.lines.map(&:strip).select {|x| !ignored.include?(x)  }

@@ -1,6 +1,6 @@
 [user]
   name = Jeff Stokes
-  email = jeffecu88@gmail.com
+  email = jstokes@appia.com
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0
@@ -8,7 +8,7 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-  editor = emacsclient -t
+  editor = vim
   autocrlf = input
 [alias]
   us = reset HEAD
@@ -36,6 +36,7 @@
   nm = log head "^master" --no-merges
   review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
   dfc = diff --color-words
+  sh = show head --format="%H" -s 
 [color]
   ui = true
 [push]
