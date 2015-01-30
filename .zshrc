@@ -2,6 +2,10 @@
 autoload -U colors
 colors
 
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey "^R" history-incremental-search-backward
@@ -21,8 +25,6 @@ DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME=""
 
-plugins=(colorize vagrant brew gitfast git-flow vi-mode bundle gradle maven)
-
 source ~/.bin/tmuxinator.zsh
 
 source ~/.zsh/git-prompt/zshrc.sh
@@ -30,10 +32,9 @@ PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 source ~/.fzf.zsh
 
-for file in ~/env/.*
-  do if [[ $file != *.#.*  ]] then
-    source "$file"
-  fi
+for file in ~/env/.* 
+do
+  source "$file"
 done
 
 #rbenv

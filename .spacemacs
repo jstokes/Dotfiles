@@ -10,7 +10,7 @@
  ;; Paths must have a trailing slash (ie. `~/.mycontribs/')
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
- dotspacemacs-configuration-layers '(clojure-dev scala)
+ dotspacemacs-configuration-layers '(clojure-dev scala git colors)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
 )
@@ -27,11 +27,11 @@
  ;; List of themes, the first of the list is loaded when spacemacs starts.
  ;; Press <SPC> T n to cycle to the next theme in the list (works great
  ;; with 2 themes variants, one dark and one light)
- dotspacemacs-themes '(zenburn)
+ dotspacemacs-themes '(wombat)
  ;; Default font. The powerline-offset allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
- dotspacemacs-default-font '("Source Code Pro"
-                             :size 15
+ dotspacemacs-default-font '("Inconsolata-dz for Powerline"
+                             :size 14
                              :weight normal
                              :width normal
                              :powerline-offset 2)
@@ -90,16 +90,20 @@
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
-This function is called at the very end of Spacemacs initialization."
+   This function is called at the very end of Spacemacs initialization."
+  (setq global-hl-line-mode nil)
+  (global-linum-mode)
+
+  (setq git-gutter-fr:side 'left-fringe)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super)
+  (setq mac-pass-control-to-system nil)
+
+  (global-set-key (kbd "s-q") 'save-buffers-kill-emacs)
+  (global-set-key (kbd "s-v") 'yank)
+  (global-set-key (kbd "s-c") 'copy-region-as-kill)
 )
 
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
-(setq mac-pass-control-to-system nil)
-
-(global-set-key (kbd "s-q") 'save-buffers-kill-emacs)
-(global-set-key (kbd "s-v") 'yank)
-(global-set-key (kbd "s-c") 'copy-region-as-kill)
 
 ;; Custom variables
 ;; ----------------
