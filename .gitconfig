@@ -8,7 +8,7 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-  editor = vim
+  editor = nvim
   autocrlf = input
 [alias]
   us = reset HEAD

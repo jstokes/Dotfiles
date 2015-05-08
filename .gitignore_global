@@ -67,3 +67,4 @@ vendor/
 .ensime
 .ensime_cache/
 .projectile
+*.gem

@@ -18,7 +18,8 @@ bindkey -M viins "^P" fzf-file-widget
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-export EDITOR='emacsclient -t'
+export EDITOR='vi'
+export VISUAL='vi'
 zstyle ':completion:*' hosts off
 
 DISABLE_AUTO_TITLE="true"
@@ -27,17 +28,25 @@ ZSH_THEME=""
 
 source ~/.bin/tmuxinator.zsh
 
-source ~/.zsh/git-prompt/zshrc.sh
-PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
-ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
-source ~/.fzf.zsh
-
 for file in ~/env/.* 
 do
   source "$file"
 done
 
+source ~/.zsh/git-prompt/zshrc.sh
+PROMPT=$'%{${fg[blue]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
+ZSH_THEME_GIT_PROMPT_PREFIX=" ("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[green]%}"
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
+source ~/.fzf.zsh
+
+
 #rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
-rbenv global 1.9.3-p547
+rbenv global 2.2.1
+
+# init docker
+$(boot2docker shellinit 2> /dev/null)

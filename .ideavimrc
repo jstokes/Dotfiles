@@ -26,8 +26,8 @@ vnoremap > >gv
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-inoremap jk <esc>
-inoremap kj <esc>
+" inoremap jk <esc>
+" inoremap kj <esc>
 inoremap <esc> <esc>
 
 noremap <CR> :
