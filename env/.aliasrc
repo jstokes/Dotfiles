@@ -1,8 +1,8 @@
 alias mvnci="mvn clean install"
 alias mvnt="mvn test"
 alias tmux="TERM=screen-256color-bce tmux"
-alias v='nvim'
-alias vi='nvim'
+alias v='emacsclient -t'
+alias vi='emacsclient -t'
 alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 vim'
 alias vil='mvim -v $(fc)'
 alias g='git'

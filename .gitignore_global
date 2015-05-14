@@ -68,3 +68,4 @@ vendor/
 .ensime_cache/
 .projectile
 *.gem
+.ruby-version

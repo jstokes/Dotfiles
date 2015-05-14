@@ -46,7 +46,7 @@ source ~/.fzf.zsh
 #rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
-rbenv global 2.2.1
+rbenv global 2.1.5
 
 # init docker
 $(boot2docker shellinit 2> /dev/null)

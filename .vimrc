@@ -39,6 +39,8 @@ NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'jebberjeb/grimoire.vim'
 NeoBundle 'benmills/vimux'
 NeoBundle 'cloud8421/vimux-cucumber'
+NeoBundle 'suan/vim-instant-markdown'
+NeoBundle 'qpkorr/vim-bufkill'
 
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"

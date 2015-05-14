@@ -26,12 +26,12 @@ vnoremap > >gv
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-" inoremap jk <esc>
-" inoremap kj <esc>
 inoremap <esc> <esc>
 
 noremap <CR> :
 
 nnoremap Y y$
 
+nnoremap p "*p
+nnoremap y "*y
 set visualbell
