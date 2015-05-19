@@ -40,8 +40,10 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[green]%}"
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
-source ~/.fzf.zsh
+GIT_PROMPT_EXECUTABLE="haskell"
+ZSH_THEME_GIT_PROMPT_CACHE=true
 
+source ~/.fzf.zsh
 
 #rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -50,3 +52,6 @@ rbenv global 2.1.5
 
 # init docker
 $(boot2docker shellinit 2> /dev/null)
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
