@@ -11,21 +11,23 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(auto-completion
-      (git :variables
-           git-gutter-use-fringe t)
-      markdown
-      org
-      syntax-checking
-      osx
-      tmux
-      clojure
-      ruby
-      cucumber
-      colors
-      emacs-lisp
-      evil-commentary
-      auto-completion)
+   '((auto-completion :variables
+                      auto-completion-complete-with-key-sequence "jk"
+                      auto-completion-enable-sort-by-usage t)
+     (git :variables
+          git-gutter-use-fringe t)
+     markdown
+     org
+     syntax-checking
+     osx
+     tmux
+     clojure
+     ruby
+     cucumber
+     colors
+     emacs-lisp
+     evil-commentary
+     python)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -53,7 +55,7 @@ before layers configuration."
                          solarized-dark
                          ujelly)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Inconsolata-dz for Powerline"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 16
                                :weight normal
                                :width normal
@@ -66,9 +68,9 @@ before layers configuration."
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-guide-key-delay 0.4
    dotspacemacs-loading-progress-bar t
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    dotspacemacs-active-transparency 90
    dotspacemacs-inactive-transparency 90
    dotspacemacs-mode-line-unicode-symbols t
@@ -81,7 +83,10 @@ before layers configuration."
   )
 
 (defun dotspacemacs/config ()
- (setq clojure-enable-fancify-symbols t)
+  (setq clojure-enable-fancify-symbols t
+        cider-auto-select-error-buffer nil
+        cider-auto-jump-to-error nil
+        clojure-defun-style-default-indent t)
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration.")
