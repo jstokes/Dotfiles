@@ -8,8 +8,9 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-  editor = nvim
+  editor = mvim -v
   autocrlf = input
+	pager = less -R
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
