@@ -108,6 +108,8 @@ noremap H ^
 noremap L $
 vnoremap L g_
 
+set spell
+
 " Close buffer without killing split
 nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR> 
 
