@@ -5,7 +5,7 @@ let vimpager_scrolloff = 5
 
 " here are some basic customizations, please refer to the top of the vimrc
 " file for all possible options
-let g:dotvim_settings.autocomplete_method = 'ycm'
+" let g:dotvim_settings.autocomplete_method = 'ycm'
 
 " by default, language specific plugins are not loaded.  this can be changed with the following:
 " let g:dotvim_settings.plugin_groups_exclude = ['ruby','python']
@@ -123,3 +123,21 @@ if exists('$TMUX')
   autocmd FileType cucumber map <Leader>t :RunAllCukes<CR>
 endif
 
+" Protect large files from sourcing and other overhead.
+" Files become read only
+let g:LargeFile=10
+if !exists("my_auto_commands_loaded")
+  let my_auto_commands_loaded = 1
+  " Large files are > 10M
+  " Set options:
+  " eventignore+=FileType (no syntax highlighting etc
+  " assumes FileType always on)
+  " noswapfile (save copy of file)
+  " bufhidden=unload (save memory when other file is viewed)
+  " buftype=nowritefile (is read-only)
+  " undolevels=-1 (no undo possible)
+  let g:LargeFile = 1024 * 1024 * 10
+  augroup LargeFile
+    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+  augroup END
+endif
