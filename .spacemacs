@@ -14,19 +14,17 @@
    '((auto-completion :variables
                       auto-completion-complete-with-key-sequence "jk"
                       auto-completion-enable-sort-by-usage t)
-     (git :variables
-          git-gutter-use-fringe t)
+     (git :variables git-gutter-use-fringe t)
      markdown
      org
-     syntax-checking
      osx
      tmux
      clojure
-     ruby
-     cucumber
      colors
      emacs-lisp
      evil-commentary
+     themes-megapack
+     ruby
      python)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -45,7 +43,8 @@ before layers configuration."
    dotspacemacs-startup-banner 'official
    dotspacemacs-always-show-changelog t
    dotspacemacs-startup-lists '(recents projects)
-   dotspacemacs-themes '(noctilux
+   dotspacemacs-themes '(sanityinc-tomorrow-bright
+                         noctilux
                          zenburn
                          tango-dark
                          tango
@@ -55,7 +54,7 @@ before layers configuration."
                          solarized-dark
                          ujelly)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Hack"
                                :size 16
                                :weight normal
                                :width normal
@@ -79,14 +78,14 @@ before layers configuration."
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil)
-  ;; User initialization goes here
+   ;; User initialization goes here
   )
 
 (defun dotspacemacs/config ()
   (setq clojure-enable-fancify-symbols t
         cider-auto-select-error-buffer nil
         cider-auto-jump-to-error nil
-        clojure-defun-style-default-indent t)
+        clojure-defun-style-default-indent nil)
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration.")
