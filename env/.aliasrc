@@ -44,3 +44,4 @@ alias type='type -a'
 alias tm="tmate -S /tmp/tmate.sock new-session"
 alias tro="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh_ro}'"
 alias trw="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'"
+alias dc=docker-compose
