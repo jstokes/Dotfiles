@@ -13,13 +13,17 @@
    dotspacemacs-configuration-layers
    '((auto-completion :variables
                       auto-completion-complete-with-key-sequence "jk"
-                      auto-completion-enable-sort-by-usage t)
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-enable-help-tooltip t)
      (git :variables git-gutter-use-fringe t)
      markdown
      org
      osx
      tmux
      clojure
+     scala
      colors
      emacs-lisp
      evil-commentary
@@ -67,14 +71,14 @@ before layers configuration."
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-guide-key-delay 0.4
    dotspacemacs-loading-progress-bar t
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup nil
    dotspacemacs-active-transparency 90
    dotspacemacs-inactive-transparency 90
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil)
@@ -85,7 +89,8 @@ before layers configuration."
   (setq clojure-enable-fancify-symbols t
         cider-auto-select-error-buffer nil
         cider-auto-jump-to-error nil
-        clojure-defun-style-default-indent nil)
+        clojure-defun-style-default-indent nil
+        ffap-machine-p-known 'reject)
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration.")
