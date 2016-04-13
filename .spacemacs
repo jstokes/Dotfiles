@@ -11,25 +11,28 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '((auto-completion :variables
+   '(
+     (auto-completion :variables
                       auto-completion-complete-with-key-sequence "jk"
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-enable-help-tooltip t)
      (git :variables git-gutter-use-fringe t)
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
      markdown
+     dockerfile
      org
      osx
-     tmux
      clojure
      scala
-     colors
      emacs-lisp
      evil-commentary
      themes-megapack
+     yaml
      ruby
-     python)
+     python
+     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -45,6 +48,7 @@ before layers configuration."
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
+   dotspacemacs-elpa-https nil
    dotspacemacs-always-show-changelog t
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-themes '(sanityinc-tomorrow-bright
@@ -59,7 +63,7 @@ before layers configuration."
                          ujelly)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
-                               :size 16
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-offset 2)
@@ -88,9 +92,10 @@ before layers configuration."
 (defun dotspacemacs/config ()
   (setq clojure-enable-fancify-symbols t
         cider-auto-select-error-buffer nil
-        cider-auto-jump-to-error nil
+        cider-auto-jump-to-error t
         clojure-defun-style-default-indent nil
         ffap-machine-p-known 'reject)
+  (spacemacs/toggle-fringe-off)
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration.")

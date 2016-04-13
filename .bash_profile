@@ -5,3 +5,13 @@ export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frame
 [[ -s "/Users/jstokes/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "/Users/jstokes/.gvm/bin/gvm-init.sh"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/jstokes/work/rtdp-rtbconversions/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/jstokes/work/rtdp-rtbconversions/dcos/bin;
+fi
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/jstokes/Developer/bin/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/jstokes/Developer/bin/dcos/bin;
+fi

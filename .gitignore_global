@@ -69,3 +69,5 @@ vendor/
 .projectile
 *.gem
 .ruby-version
+
+.lein-repl-history

@@ -55,3 +55,16 @@ $(boot2docker shellinit 2> /dev/null)
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/jstokes/work/rtdp-rtbconversions/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/jstokes/work/rtdp-rtbconversions/dcos/bin;
+fi
+
+# path to the DCOS CLI binary
+if [[ "$PATH" != *"/Users/jstokes/Developer/bin/dcos/bin"* ]];
+  then export PATH=$PATH:/Users/jstokes/Developer/bin/dcos/bin;
+fi
+
+export LEIN_SNAPSHOTS_IN_RELEASE=true
