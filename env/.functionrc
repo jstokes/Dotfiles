@@ -108,6 +108,8 @@ function ssh-copy-id() {
   cat ~/.ssh/id_rsa.pub | ssh $1 "mkdir -p ~/.ssh/; cat >> ~/.ssh/authorized_keys"
 }
 
+function foreach () { while IFS= read -r l; do eval "$@"; done; }
+
 function zshconfig() { vim ~/.zshrc }
 function so() { source ~/.zshrc }
 function ohmyzsh() { vim ~/.oh-my-zsh }

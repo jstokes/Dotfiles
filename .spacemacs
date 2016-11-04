@@ -12,6 +12,9 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     javascript
+     yaml
+     vimscript
      (auto-completion :variables
                       auto-completion-complete-with-key-sequence "jk"
                       auto-completion-enable-sort-by-usage t
@@ -25,14 +28,9 @@
      org
      osx
      clojure
-     scala
      emacs-lisp
      evil-commentary
-     themes-megapack
-     yaml
-     ruby
-     python
-     )
+     themes-megapack)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -63,7 +61,7 @@ before layers configuration."
                          ujelly)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
-                               :size 17
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-offset 2)

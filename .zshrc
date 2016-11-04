@@ -50,12 +50,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RBENV_ROOT=/usr/local/var/rbenv
 rbenv global 2.1.5
 
-# init docker
-$(boot2docker shellinit 2> /dev/null)
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
-
 
 # path to the DCOS CLI binary
 if [[ "$PATH" != *"/Users/jstokes/work/rtdp-rtbconversions/dcos/bin"* ]];
@@ -68,3 +64,5 @@ if [[ "$PATH" != *"/Users/jstokes/Developer/bin/dcos/bin"* ]];
 fi
 
 export LEIN_SNAPSHOTS_IN_RELEASE=true
+
+setopt interactivecomments
