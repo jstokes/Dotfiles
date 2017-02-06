@@ -34,11 +34,11 @@ do
 done
 
 source ~/.zsh/git-prompt/zshrc.sh
-PROMPT=$'%{${fg[blue]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
-ZSH_THEME_GIT_PROMPT_PREFIX=" ("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
-ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[green]%}"
+PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
+ZSH_THEME_GIT_PROMPT_PREFIX=" ["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[blue]%}"
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 GIT_PROMPT_EXECUTABLE="haskell"
 ZSH_THEME_GIT_PROMPT_CACHE=true
