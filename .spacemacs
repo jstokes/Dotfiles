@@ -90,13 +90,15 @@ before layers configuration."
    ;; User initialization goes here
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   (setq clojure-enable-fancify-symbols t
         cider-auto-select-error-buffer nil
         cider-auto-jump-to-error t
+        cider-font-lock-dynamically '(macro core function var)
+        cider-pprint-fn 'fipp
         clojure-defun-style-default-indent nil
         ffap-machine-p-known 'reject)
-  (spacemacs/toggle-fringe-off)
+  (fringe-mode '(1 . 1))
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration.")
