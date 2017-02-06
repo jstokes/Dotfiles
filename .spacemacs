@@ -11,7 +11,10 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '(python
+     lua
+     ruby
+     sql
      javascript
      yaml
      vimscript
@@ -24,7 +27,7 @@
      (git :variables git-gutter-use-fringe t)
      (colors :variables colors-enable-nyan-cat-progress-bar t)
      markdown
-     dockerfile
+     docker
      org
      osx
      clojure
