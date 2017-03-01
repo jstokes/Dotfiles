@@ -53,8 +53,7 @@ before layers configuration."
    dotspacemacs-elpa-https nil
    dotspacemacs-always-show-changelog t
    dotspacemacs-startup-lists '(recents projects)
-   dotspacemacs-themes '(gandalf
-                         sanityinc-tomorrow-bright
+   dotspacemacs-themes '(sanityinc-tomorrow-bright
                          noctilux
                          zenburn
                          tango-dark
@@ -63,7 +62,8 @@ before layers configuration."
                          monokai
                          solarized-light
                          solarized-dark
-                         ujelly)
+                         ujelly
+                         gandalf)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
                                :size 14
