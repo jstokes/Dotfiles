@@ -104,7 +104,10 @@ before layers configuration."
 
   (with-eval-after-load 'clojure-mode
     (put-clojure-indent 'clojure.spec/sfef 2)
-    (put-clojure-indent 'clojure.test.check.properties/for-all 1))
+    (put-clojure-indent 'clojure.test.check.properties/for-all 1)
+    (put-clojure-indent 'clojure.spec/fdef 1)
+    (put-clojure-indent 's/fdef 1)
+    )
 
   (fringe-mode '(1 . 1))
   "Configuration function.
