@@ -45,11 +45,6 @@ ZSH_THEME_GIT_PROMPT_CACHE=true
 
 source ~/.fzf.zsh
 
-#rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export RBENV_ROOT=/usr/local/var/rbenv
-rbenv global 2.1.5
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -69,3 +64,19 @@ setopt interactivecomments
 
 export NVM_DIR="/Users/jstokes/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
+
+
+export PATH="/usr/local/opt/apache-spark@1.6/bin:$PATH"
