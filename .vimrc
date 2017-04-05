@@ -1,7 +1,7 @@
 let g:dotvim_settings = {}
 let g:dotvim_settings.version = 1
 let vimpager_passthrough = 1
-let vimpager_scrolloff = 5 
+let vimpager_scrolloff = 5
 
 " here are some basic customizations, please refer to the top of the vimrc
 " file for all possible options
@@ -17,12 +17,14 @@ let g:dotvim_settings.colorscheme = 'tomorrow-night-bright'
 " finally, load the distribution
 source ~/.vim/vimrc
 "
+call neobundle#begin()
 NeoBundle 'Slava/vim-colors-tomorrow'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-sexp'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'qpkorr/vim-bufkill'
+call neobundle#end()
 
 let g:togglecursor_default = "block"
 let g:togglecursor_insert = "underline"
@@ -91,7 +93,7 @@ noremap L $
 vnoremap L g_
 
 " Close buffer without killing split
-nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR> 
+nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
 map <Leader>r :w<CR>:VimuxRunLastCommand<CR>
 map <Leader>t :w<CR>:RunTests<CR>
