@@ -2,3 +2,4 @@
 .appiarc
 .hashrc
 *.elc
+env/.amperityrc
