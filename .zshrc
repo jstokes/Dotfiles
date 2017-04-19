@@ -1,4 +1,15 @@
 #!/bin/zsh
+
+if [[ "$TERM" == "dumb" ]]
+then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+fi
+
 autoload -U colors
 colors
 
@@ -18,9 +29,9 @@ bindkey -M viins "^P" fzf-file-widget
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-export EDITOR='vi'
-export VISUAL='vi'
-zstyle ':completion:*' hosts off
+export EDITOR='emacs'
+export VISUAL='emacs'
+zstyle ':completion:*:*:git:*' hosts off
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -47,16 +58,7 @@ source ~/.fzf.zsh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-# path to the DCOS CLI binary
-if [[ "$PATH" != *"/Users/jstokes/work/rtdp-rtbconversions/dcos/bin"* ]];
-  then export PATH=$PATH:/Users/jstokes/work/rtdp-rtbconversions/dcos/bin;
-fi
-
-# path to the DCOS CLI binary
-if [[ "$PATH" != *"/Users/jstokes/Developer/bin/dcos/bin"* ]];
-  then export PATH=$PATH:/Users/jstokes/Developer/bin/dcos/bin;
-fi
+fpath=(~/.zsh $fpath)
 
 export LEIN_SNAPSHOTS_IN_RELEASE=true
 
