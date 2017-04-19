@@ -47,3 +47,5 @@ alias tro="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh_ro}'"
 alias trw="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'"
 alias dc=docker-compose
 alias vim='emacsclient -t'
+
+alias ldt='lein with-profile -user deps :tree 2>&1 | less -R'
