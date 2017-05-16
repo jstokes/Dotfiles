@@ -80,7 +80,6 @@ before layers configuration."
   (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives) 
   (push '(cider . "melpa-stable") package-pinned-packages)
   (push '(clj-refactor . "melpa-stable") package-pinned-packages))
-  
 
 (defun dotspacemacs/user-config ()
   (setq clojure-enable-fancify-symbols t
@@ -98,14 +97,15 @@ before layers configuration."
         ffap-machine-p-known 'reject
         tramp-default-method "ssh")
 
-  (evil-define-key 'normal clojure-mode-map
-    (kbd ";") 'cider-eval-defun-at-point)
-
   (evil-define-key '(normal insert) clojure-mode-map
+    ;; defun at point
     (kbd "C-;") 'cider-eval-defun-at-point
     (kbd "C-:") 'cider-pprint-eval-defun-at-point
-    (kbd "C-'") 'cider-eval-defun-to-comment)
+    (kbd "C-'") 'cider-eval-defun-to-comment
 
+    ;; sexp at point
+    (kbd "s-;") 'cider-eval-sexp-at-point
+    (kbd "s-:") 'cider-pprint-eval-sexp-at-point)
 
   (with-eval-after-load 'clojure-mode
     (turn-off-smartparens-mode) ;; parinfer does this
