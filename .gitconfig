@@ -1,6 +1,6 @@
 [user]
   name = Jeff Stokes
-  email = jeffecu88@gmail.com
+  email = jeff@amperity.com
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0
@@ -19,7 +19,7 @@
   st = status -s
   co = checkout
   ci = commit -v
-  br = branch
+  br = branch --sort=-committerdate
   df = diff
   dfs = diff --stat
   dfp = diff head~
@@ -37,7 +37,7 @@
   nm = log head "^master" --no-merges
   review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
   dfc = diff --color-words
-  sh = show head --format="%H" -s 
+  sh = show head --format="%H" -s
 [color]
   ui = true
 [push]
