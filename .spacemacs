@@ -11,7 +11,8 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(javascript
+   '(
+     javascript
      ruby
      python
      sql
@@ -53,7 +54,7 @@ before layers configuration."
    dotspacemacs-themes '(sanityinc-tomorrow-night)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
-                               :size 13
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -82,13 +83,13 @@ before layers configuration."
   (push '(clj-refactor . "melpa-stable") package-pinned-packages))
 
 (defun dotspacemacs/user-config ()
-  (setq clojure-enable-fancify-symbols t
+  (setq clojure-enable-fancify-symbols nil
+        cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"
         clojure-indent-style :align-arguments
         nrepl-use-ssh-fallback-for-remote-hosts t
         cider-auto-select-error-buffer nil
         cljr-clojure-test-declaration "[clojure.test :refer :all]"
         cljr-clojure-test-namespace-under-test-alias "impl"
-        ;; cider-pprint-fn 'puget
         cider-auto-jump-to-error t
         projectile-mode-line "Projectile"
         cider-font-lock-dynamically '(macro core function var)
@@ -96,6 +97,9 @@ before layers configuration."
         clojure-defun-style-default-indent nil
         ffap-machine-p-known 'reject
         tramp-default-method "ssh")
+
+  ;; Prevents clipboard paste when opening files with mouse
+  (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
 
   (evil-define-key '(normal insert) clojure-mode-map
     ;; defun at point
@@ -108,7 +112,9 @@ before layers configuration."
     (kbd "s-:") 'cider-pprint-eval-sexp-at-point)
 
   (with-eval-after-load 'clojure-mode
-    (turn-off-smartparens-mode) ;; parinfer does this
+    ;;(turn-off-smartparens-mode) ;; parinfer does this
+
+    (setq cider-pprint-fn "puget.printer/cprint")
 
     (put-clojure-indent 'clojure.spec/sfef 2)
     (put-clojure-indent 'clojure.test.check.properties/for-all 1)
