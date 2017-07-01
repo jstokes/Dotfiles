@@ -44,3 +44,5 @@
   default = current
 [help]
   autocorrect = 1
+[pull]
+	rebase = true
