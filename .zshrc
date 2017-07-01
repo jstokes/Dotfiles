@@ -32,7 +32,6 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 export EDITOR='emacs'
 export VISUAL='emacs'
-zstyle ':completion:*:*:git:*' hosts off
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -58,15 +57,10 @@ ZSH_THEME_GIT_PROMPT_CACHE=true
 source ~/.fzf.zsh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fpath=(/usr/local/share/zsh-completions $fpath)
-fpath=(~/.zsh $fpath)
 
 export LEIN_SNAPSHOTS_IN_RELEASE=true
 
 setopt interactivecomments
-
-export NVM_DIR="/Users/jstokes/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
@@ -80,6 +74,3 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
-
-
-export PATH="/usr/local/opt/apache-spark@1.6/bin:$PATH"
