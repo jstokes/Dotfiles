@@ -11,7 +11,9 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(sql
+   '(csv
+     python
+     sql
      yaml
      syntax-checking
      (auto-completion :variables
@@ -25,7 +27,8 @@
      markdown
      clojure
      evil-commentary
-     themes-megapack)
+     themes-megapack
+     ivy)
    dotspacemacs-additional-packages '(solaire-mode
                                       flycheck-clojure
                                       ;; evil-smartparens
@@ -51,7 +54,7 @@ before layers configuration."
    dotspacemacs-themes '(sanityinc-tomorrow-bright
                          moe-dark)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Mono for Powerline"
+   dotspacemacs-default-font '("Hack"
                                :size 13
                                :weight normal
                                :width normal
@@ -74,24 +77,22 @@ before layers configuration."
    dotspacemacs-smartparens-strict-mode t
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   dotspacemacs-line-numbers 'relative
+   dotspacemacs-line-numbers nil
    dotspacemacs-default-package-repository nil)
   ;;(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   ;;(push '(cider . "melpa-stable") package-pinned-packages)
   ;;(push '(clj-refactor . "melpa-stable") package-pinned-packages)
   )
 
-
 (defun dotspacemacs/user-config ()
-  (setq clojure-enable-fancify-symbols t
+  (setq clojure-enable-fancify-symbols nil
         cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"
         clojure-indent-style :align-arguments
-        clojure-align-forms-automatically t
         nrepl-use-ssh-fallback-for-remote-hosts t
         cider-auto-select-error-buffer nil
         cljr-clojure-test-declaration "[clojure.test :refer :all]"
         cljr-clojure-test-namespace-under-test-alias "impl"
-        cljr-favor-prefix-notation t
+        cljr-favor-prefix-notation nil
         cider-auto-jump-to-error t
         cider-prompt-save-file-on-refresh nil
         cider-save-file-on-load nil
@@ -105,8 +106,11 @@ before layers configuration."
         column-enforce-column 100
         ;; actually fullscreen
         frame-resize-pixelwise t
-        ;; maybe stop freezing on search?
-        dotspacemacs-mode-line-unicode-symbols nil)
+        ;; try to stop freezing?
+        evil-ex-search-highlight-all nil
+
+        ;; enable fuzzy-ish searching with ivy
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
 
   ;; Prevents clipboard paste when opening files with mouse
