@@ -16,6 +16,7 @@
   uc = reset --soft HEAD^
   pl = smart-pull
   ph = push
+  phf = push --force-with-lease
   st = status -s
   co = checkout
   ci = commit -v
@@ -48,3 +49,5 @@
 	rebase = true
 [rerere]
 	enabled = true
+[magit]
+	hideCampaign = true
