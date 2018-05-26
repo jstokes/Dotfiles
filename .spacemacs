@@ -11,7 +11,9 @@
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(csv
+   '(javascript
+     ruby
+     csv
      python
      sql
      yaml
@@ -27,12 +29,10 @@
      markdown
      clojure
      evil-commentary
-     themes-megapack
      ivy)
    dotspacemacs-additional-packages '(solaire-mode
                                       flycheck-clojure
-                                      ;; evil-smartparens
-                                      magit-gh-pulls)
+                                      evil-smartparens)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -55,7 +55,7 @@ before layers configuration."
                          moe-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
