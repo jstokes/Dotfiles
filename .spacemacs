@@ -73,10 +73,11 @@ before layers configuration."
    dotspacemacs-active-transparency 100
    dotspacemacs-inactive-transparency 70
    dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-theme 'spacemacs
    dotspacemacs-smooth-scrolling t
    dotspacemacs-smartparens-strict-mode t
    dotspacemacs-persistent-server nil
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-line-numbers nil
    dotspacemacs-default-package-repository nil)
   ;;(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
