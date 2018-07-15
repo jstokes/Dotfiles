@@ -51,3 +51,5 @@
 	enabled = true
 [magit]
 	hideCampaign = true
+[github]
+	user = jstokes
