@@ -1,15 +1,15 @@
 #!/bin/zsh
 
-if [[ "$TERM" == "dumb" ]]
-then
-	unsetopt zle
-	unsetopt prompt_cr
-	unsetopt prompt_subst
-	unfunction precmd
-	unfunction preexec
-	PS1='$ '
-	return
-fi
+# if [[ "$TERM" == "dumb" ]]
+# then
+# 	unsetopt zle
+# 	unsetopt prompt_cr
+# 	unsetopt prompt_subst
+# 	unfunction precmd
+# 	unfunction preexec
+# 	PS1='$ '
+# 	return
+# fi
 
 autoload -U colors
 colors
@@ -39,12 +39,8 @@ ZSH_THEME=""
 
 source ~/.bin/tmuxinator.zsh
 
-for file in ~/env/.*
-do
-  source "$file"
-done
-
 source ~/.zsh/git-prompt/zshrc.sh
+
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 ZSH_THEME_GIT_PROMPT_PREFIX=" ["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]"
@@ -66,11 +62,16 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
 
-setopt append_history
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
-setopt share_history # share command history data
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS # ignore duplication command history list
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY # share command history data
+
+export ANDROID_HOME="$HOME/Library/Android/sdk"

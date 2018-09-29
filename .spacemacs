@@ -19,7 +19,7 @@
      yaml
      syntax-checking
      (auto-completion :variables
-            auto-completion-complete-with-key-sequence "jk"
+                      auto-completion-complete-with-key-sequence "jk"
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
@@ -55,7 +55,7 @@ before layers configuration."
                          moe-dark)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Hack"
-                               :size 12
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -67,7 +67,7 @@ before layers configuration."
    dotspacemacs-enable-paste-micro-state t
    dotspacemacs-guide-key-delay 0.4
    dotspacemacs-loading-progress-bar t
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup nil
    dotspacemacs-active-transparency 100
@@ -80,9 +80,7 @@ before layers configuration."
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-line-numbers nil
    dotspacemacs-default-package-repository nil)
-  ;;(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-  ;;(push '(cider . "melpa-stable") package-pinned-packages)
-  ;;(push '(clj-refactor . "melpa-stable") package-pinned-packages)
+
   )
 
 
@@ -111,7 +109,6 @@ before layers configuration."
         ffap-machine-p-known 'reject
         tramp-default-method "ssh"
         powerline-default-separator 'arrow-fade
-        column-enforce-column 120
         vc-follow-symlinks t
         admin-repl-directory "~/work/app/service/admin/admin-repl"
         ;; actually fullscreen
@@ -130,7 +127,6 @@ before layers configuration."
   (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
 
   ;; (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-  (add-hook 'clojure-mode-hook #'column-enforce-mode)
 
   ;; Allow sending C-r in terminal
   (defun bb/setup-term-mode ()
@@ -169,58 +165,24 @@ before layers configuration."
            (port (car (cdr addr-port)))
            (env-str (concat (format "admin-repl[env:%s]" env)
                             (when stage (format "[stage:%s]" stage))))
-           (buffer-name env-str)
-           (buffer (or (get-buffer buffer-name)
-                       (with-current-buffer (get-buffer-create buffer-name)
-                         (cider-connect addr port default-directory)
-                         (clojure-mode)
-                         (insert (format ";; Admin repl for %s\n\n" env-str))
-                         (current-buffer)))))
+           (buffer (cider-repl-create '(:repl-type "clj"
+                                                   :host addr
+                                                   :port port
+                                                   :project-dir admin-repl-directory
+                                                   :session-name env-str))))
+      (sesman-add-object 'CIDER env-str buffer t)
       (pop-to-buffer buffer)))
 
-  (defun indent-cond (indent-point state)
-    (goto-char (elt state 1))
-    (let ((pos -1)
-          (base-col (current-column)))
-      (forward-char 1)
-      ;; `forward-sexp' will error if indent-point is after
-      ;; the last sexp in the current sexp.
-      (condition-case nil
-          (while (and (<= (point) indent-point)
-                      (not (eobp)))
-            (clojure-forward-logical-sexp 1)
-            (cl-incf pos))
-        ;; If indent-point is _after_ the last sexp in the
-        ;; current sexp, we detect that by catching the
-        ;; `scan-error'. In that case, we should return the
-        ;; indentation as if there were an extra sexp at point.
-        (scan-error (cl-incf pos)))
-      (+ base-col (if (evenp pos) 4 2))))
 
-  (defun indent-cond-> (indent-point state)
-    (goto-char (elt state 1))
-    (let ((pos -1)
-          (base-col (current-column)))
-      (forward-char 1)
-      ;; `forward-sexp' will error if indent-point is after
-      ;; the last sexp in the current sexp.
-      (condition-case nil
-          (while (and (<= (point) indent-point)
-                      (not (eobp)))
-            (clojure-forward-logical-sexp 1)
-            (cl-incf pos))
-        ;; If indent-point is _after_ the last sexp in the
-        ;; current sexp, we detect that by catching the
-        ;; `scan-error'. In that case, we should return the
-        ;; indentation as if there were an extra sexp at point.
-        (scan-error (cl-incf pos)))
-      (+ base-col (if (oddp pos) 4 2))))
+  (defun upstream-install ()
+    (interactive)
+    (shell-command-to-string "lein monolith each :upstream :parallel 6 install"))
+
+  (defun link-project ()
+    (interactive)
+    (shell-command-to-string "lein monolith link :deep"))
 
   (with-eval-after-load 'clojure-mode
-    (put-clojure-indent 'cond #'indent-cond)
-    (put-clojure-indent 'condp #'indent-cond)
-    (put-clojure-indent 'cond-> #'indent-cond->)
-    (put-clojure-indent 'cond->> #'indent-cond->)
     (put-clojure-indent 'sdef 2)
     (put-clojure-indent 'for-all 1)
     (put-clojure-indent 'fdef 1)
@@ -242,7 +204,54 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-smartparens yasnippet-snippets yapfify yaml-mode ws-butler winum which-key wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection sql-indent spaceline-all-the-icons solaire-mode smex smeargle sayid rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode password-generator paradox org-plus-contrib org-bullets open-junk-file neotree move-text moe-theme mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-navigator json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-pos-tip flycheck-clojure flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu editorconfig dumb-jump diminish define-word cython-mode csv-mode counsel-projectile company-tern company-statistics company-quickhelp company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-identifiers-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode bundler auto-yasnippet auto-highlight-symbol aggressive-indent ace-window ace-link ac-ispell))))
+    (polymode evil-mc evil-matchit dumb-jump doom-modeline counsel-projectile counsel eclim iedit smartparens projectile multiple-cursors avy magit git-commit ghub treepy graphql company pythonic ivy yasnippet org-plus-contrib evil hydra yasnippet-snippets yapfify yaml-mode ws-butler with-editor winum which-key wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toml-mode toc-org symon swiper string-inflection sql-indent spaceline-all-the-icons solaire-mode smex smeargle shrink-path seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort prettier-js popwin pippel pipenv pip-requirements persp-mode password-generator paradox org-bullets open-junk-file noflet neotree mvn move-text moe-theme mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow lorem-ipsum livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make groovy-mode groovy-imports gradle-mode goto-chg google-translate golden-ratio gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flycheck-rust flycheck-pos-tip flycheck-clojure flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-smartparens evil-numbers evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu ensime eldoc-eval editorconfig dotenv-mode diminish define-word cython-mode csv-mode company-tern company-statistics company-quickhelp company-emacs-eclim company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow color-identifiers-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode cargo bundler auto-yasnippet auto-highlight-symbol aggressive-indent ace-window ace-link ac-ispell)))
+ '(safe-local-variable-values
+   (quote
+    ((eval define-clojure-indent
+           (:require 0)
+           (:import
+            (quote
+             (0
+              (0))))
+           (defrecord
+             (quote
+              (1 nil
+                 (:defn))))
+           (forv 1)
+           (for+ 1))
+     (eval define-clojure-indent
+           (:require 0)
+           (:import
+            (quote
+             (0
+              (0))))
+           (defrecord
+             (quote
+              (1 nil
+                 (:defn))))
+           (forv 1)
+           (for+ 1)
+           (do-at 1)
+           (thrown\? 1)
+           (thrown-with-msg\? 2))
+     (eval define-clojure-indent
+           (:require 0)
+           (:import
+            (quote
+             (0
+              (0))))
+           (defrecord
+             (quote
+              (1 nil
+                 (:defn))))
+           (forv 1)
+           (for+ 1)
+           (future-with 1)
+           (do-at 1)
+           (thrown\? 1)
+           (thrown-with-msg\? 2))
+     (javascript-backend . tern)
+     (javascript-backend . lsp)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
