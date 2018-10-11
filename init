@@ -1,92 +1,32 @@
 #!/bin/bash
 
-# install brew
-echo "installing brew"
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+set -e
 
-echo "installing tmux"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 brew install tmux
 
-echo "installing reattach-to-user-namespace"
 brew install reattach-to-user-namespace
 
-echo "installing newer ruby"
-brew install ruby
+brew cask install emacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
-echo "updating vim"
-brew install macvim
+git clone git@github.com:olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "installing emacs"
-brew install emacs
-
-# replace me with spacemacs
-# echo "installing bling emacs"
-# git clone git@github.com:bling/dotemacs.git ~/.emacs.d
-# git clone git@github.com:bling/dotvim.git ~/.vim
-
-#echo "installing bash completition"
-#brew install bash-completition
-
-#echo "installing git-flow"
-#brew install git-flow
-
-echo "installing ag"
-brew install ag
-
-echo "installing cmake"
+brew install rg
 brew install cmake
-
-echo "installing tree"
 brew install tree
-
-echo "installing maven"
 brew install maven
-
-echo "installing wget"
 brew install wget
+brew install zsh
+brew install ruby
+brew install zsh-syntax-highlighting
 
-echo "downloading tmuxinator.zsh"
-wget https://raw.github.com/aziz/tmuxinator/master/completion/tmuxinator.zsh > ~/.bin/tmuxinator.zsh
+curl -sSL https://get.haskellstack.org/ | sh
 
-echo "installing brew-cask"
-brew tap phinze/cask
-brew install brew-cask
-
-#echo "installing chrome"
-#brew cask install google-chrome
-
-#echo "installing dropbox"
-#brew cask install dropbox
-
-#echo "installing google drive"
-#brew cask install google-drive
-
-#echo "installing hipchat"
-#brew cask install hipchat
-
-echo "installing gems"
 gem install git-smart
-#gem install lunchy
-#gem install terminal-notifier
-gem install tmuxinator
 
-echo "moving git status py"
-mkdir -p ~/.zsh/git-prompt
-cp gitstatus.py ~/.zsh/git-prompt/gitstatus.py
-mkdir -p ~/.bin
-cp tmuxinator.zsh ~/.bin/tmuxinator.zsh
+chsh -s $(which zsh)
 
-echo "installing bling vim"
-git clone git@github.com:bling/dotvim.git ~/.vim
-
-echo "installing vundle"
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-
-echo "installing neobundle"
-git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-
-#echo "installing oh-my-zsh"
-#./installer/oh-my-zsh.install
-
-echo "linking dot files"
 ruby setup.rb
