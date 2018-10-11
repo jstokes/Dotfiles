@@ -1,1 +1,4 @@
-/Users/jeffreystokes/.zshenv
+for file in ~/env/.*
+do
+    source "$file"
+done
