@@ -24,7 +24,9 @@
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-enable-help-tooltip t)
-     (git :variables git-gutter-use-fringe t)
+     (git :variables
+          git-gutter-use-fringe t
+          git-enable-github-support t)
      colors
      markdown
      clojure
