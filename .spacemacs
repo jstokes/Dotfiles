@@ -29,7 +29,8 @@
           git-enable-github-support t)
      colors
      markdown
-     clojure
+     (clojure :variables
+              clojure-enable-clj-refactor t)
      evil-commentary
      ivy)
    dotspacemacs-additional-packages '(solaire-mode
