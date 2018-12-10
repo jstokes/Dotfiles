@@ -84,6 +84,9 @@ before layers configuration."
    dotspacemacs-line-numbers nil
    dotspacemacs-default-package-repository nil)
 
+  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+  (push '(cider . "melpa-stable") package-pinned-packages)
+  (push '(clj-refactor . "melpa-stable") package-pinned-packages)
   )
 
 
