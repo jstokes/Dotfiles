@@ -1,0 +1,60 @@
+[options]
+    colorscheme = "jellybeans"
+    colorscheme_bg = "dark"
+    guifont = "Hack:h15"
+    enable_guicolors = false
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = true
+    iced_formatter = "cljstyle"
+    relativenumber = false
+    default_custom_leader = ","
+    windows_smartclose = ''
+
+
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+  name = "fzf"
+
+[[layers]]
+  name = "ui"
+
+[[layers]]
+  name = "git"
+
+[[layers]]
+  name = "tmux"
+
+[[layers]]
+  name = "ui"
+
+[[layers]]
+  name = "colorscheme"
+
+[[custom_plugins]]
+  name = "liquidz/vim-iced"
+  merged = false
+
+[[custom_plugins]]
+  name = "liquidz/vim-iced-asyncomplete"
+  merged = false
+
+[[custom_plugins]]
+  name = "prabirshrestha/asyncomplete.vim"
+  merged = false
+
+[[custom_plugins]]
+  name = "guns/vim-sexp"
+  merged = false
+
+[[custom_plugins]]
+  name = "liuchengxu/vim-clap"
+  merged = false
