@@ -1,38 +1,15 @@
 function! myspacevim#before() abort
-  set vimcompatible
-  " allow modelines
-  set modeline
-  " check the first 20 lines in a file
-  set modelines=20
-  set ttyfast
-  set ruler
-  set formatoptions-=cro
-  set autochdir
-  filetype plugin indent on
+endfunction
 
-  " search defaults
-  set gdefault
-  set incsearch
-  set hlsearch
-
-  " allow autocompletion for commands and menus
-  set wildmode=longest,list,full
-  set wildmenu
-
-  " ignore VCS directories
-  set wildignore+=.git,.svn,target
-
-  " suffixes that get lower priority when doing tab completion for filenames
-  set suffixes=~,.bak,.swp,.o,.so,.ko,.class,.log
-
-  " shared clipboard please
-  set clipboard=unnamedplus
+function! myspacevim#after() abort
+  " Enable default key mappings for vim-iced
+  let g:iced_enable_default_key_mappings = v:true
 
   " No highlight search result on ESC
   noremap <silent> <Esc> :noh <CR>
 
-  " Trim trailing space on save
-  autocmd BufWritePre * :%s/\s\+$//e
+  " Strip trailing whitespace on save
+  autocmd BufWritePre * %s/\s\+$//e
 
   " Map fd/df to escape for smashing
   inoremap fd <Esc>
@@ -47,31 +24,27 @@ function! myspacevim#before() abort
   nnoremap <Space>cp :Clap gfiles <CR>
   nnoremap <Space>cb :Clap buffers <CR>
   nnoremap <Space>ct :Clap proj_tags <CR>
+  nnoremap <Space>cc :Clap command <CR>
+
+  " stop inserting extra characters J :argh:
+  nnoremap J gJ
 
   " Clojure Config
   autocmd!
   autocmd FileType Clojure nnoremap <buffer> == <Plug>(iced_format)
-  autocmd FileType Clojure nnoremap <buffer> =G <Plug>(iced_format_all)
+  autocmd FileType Clojure nnoremap <buffer> =G :call cljstyle#fix()<cr>
   autocmd FileType Clojure nnoremap <buffer> K <Plug>(iced_document_popup_open)
   autocmd FileType Clojure nnoremap <buffer> <C-]> <Plug>(iced_def_jump)
   autocmd FileType Clojure nnoremap <buffer> <C-c><C-c> <Plug>(iced_eval)<Plug>(sexp_outer_list)``
   autocmd FileType Clojure nnoremap <buffer> <C-c><C-e> <Plug>(iced_eval)<Plug>(sexp_inner_element)``
 
-  " Clojure configuration
-  " Enable default key mappings for vim-iced
-  let g:iced_enable_default_key_mappings = v:true
-
-  " cljstyle formatting
-  setlocal equalprg=cljstyle\ pipe
-endfunction
-
-
-function! myspacevim#after() abort
   let g:sexp_mappings = {'sexp_indent': '', 'sexp_indent_top': ''}
+  let g:ale_linters = {'clojure': ['clj-kondo']}
 
   " ## vim-iced keybindings
   call SpaceVim#mapping#space#def('nmap', ['m',"'"], '<Plug>(iced_connect)', 'Iced Connect', 0)
   call SpaceVim#mapping#space#def('nmap', ['m','"'], '<Plug>(iced_jack_in)', 'Iced Jack In', 0)
+  call SpaceVim#mapping#space#def('nmap', ['m','='], ':call cljstyle#fix()<cr>', 'cljstyle format', 0)
 
   " ### <Space>k Slurp/Barf
   let g:_spacevim_mappings_space.k = {'name' : '+Paredit'}

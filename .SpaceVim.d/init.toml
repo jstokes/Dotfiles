@@ -29,6 +29,7 @@
 
 [[layers]]
   name = "git"
+  git-plugin = "fugitive"
 
 [[layers]]
   name = "tmux"
@@ -39,12 +40,19 @@
 [[layers]]
   name = "colorscheme"
 
+[[layers]]
+  name = "tools"
+
 [[custom_plugins]]
   name = "liquidz/vim-iced"
   merged = false
 
 [[custom_plugins]]
   name = "liquidz/vim-iced-asyncomplete"
+  merged = false
+
+[[custom_plugins]]
+  name = "guns/vim-clojure-static"
   merged = false
 
 [[custom_plugins]]
@@ -57,4 +65,16 @@
 
 [[custom_plugins]]
   name = "liuchengxu/vim-clap"
+  merged = false
+
+[[custom_plugins]]
+  name = "tpope/vim-repeat"
+  merged = false
+
+[[custom_plugins]]
+  name = "dense-analysis/ale"
+  merged = false
+
+[[custom_plugins]]
+  name = "kovisoft/paredit"
   merged = false
