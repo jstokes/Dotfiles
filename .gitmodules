@@ -1,3 +1,0 @@
-[submodule "jstokes-pack/lib/cucumber.el"]
-	path = jstokes-pack/lib/cucumber.el
-	url = git@github.com:michaelklishin/cucumber.el.git
