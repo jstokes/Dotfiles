@@ -1,68 +1,4 @@
 # vim: set filetype=sh
-function kill-jetty() {
-  ps aux | grep jetty:run | grep -v 'grep' | awk '{print $2}' | xargs kill -9
-}
-
-function kill-rails() {
-  ps aux | grep rails | grep -v 'grep' | awk '{print $2}' | xargs kill -9
-}
-
-function kill-tomcat() {
-  ps aux | grep tomcat | grep -v 'grep' | awk '{print $2}' | xargs kill -9
-}
-
-function fo() {
-  vi $(find `pwd` -iname $1 | grep -v 'build' | grep -v 'target')
-}
-
-function web-serve() {
-  python -m SimpleHTTPServer
-}
-
-function tcurl() {
-  curl -w "@/Users/jstokes/Developer/curl-format.txt" -o /dev/null -s $@
-}
-
-function finish() {
-  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org"
-  done=/Users/jstokes/Dropbox/org/work/done
-  mv $orgfile $done
-}
-
-function start() {
-  orgfile="/Users/jstokes/Dropbox/org/work/US$1.org"
-  touch $orgfile
-}
-
-beep() {
-  args=("$@");
-  eval "$@"
-  exit_code=$?;
-  growlnotify --message "finished process $args with exit code $exit_code";
-  return exit_code;
-}
-
-function alertOn() {
-  grep $1 | while read line; do growlnotify --message "Hit! $line"; echo $line; done
-}
-
-function logs() {
-  server=$1
-  ssh -t $server "cd /usr/share/jboss-as/standalone/log; bash"
-}
-
-function cbt() {
-  if [ -f 'build.gradle' ]; then
-    ./gradlew clean build test
-  elif [ -f 'pom.xml' ]; then
-    mvn clean install
-  elif [ -f 'build.sbt' ]; then
-    sbt clean compile test
-  else
-
-  echo "Don\'t know how to build in this directory!"
-  fi
-}
 
 extract () {
   if [ -f $1 ] ; then
@@ -90,18 +26,7 @@ function fname() {
 }
 
 function f() {
-  grep -ir "$@" ./
-}
-
-function g-rom() {
-  git fetch
-  cd `git rev-parse --show-toplevel`
-  git add --all
-  git commit -m 'WIP'
-  COMMITED=$?
-  git rebase origin/master
-  [[ $COMMITED -eq 0 ]] && git reset HEAD~1
-  popd
+  rg -ir "$@" ./
 }
 
 function ssh-copy-id() {
@@ -109,18 +34,4 @@ function ssh-copy-id() {
 }
 
 function foreach () { while IFS= read -r l; do eval "$@"; done; }
-
-function zshconfig() { vim ~/.zshrc }
-function so() { source ~/.zshrc }
-function ohmyzsh() { vim ~/.oh-my-zsh }
 function clr() { clear }
-function post-review() { post-review --guess-description -o }
-function mvnjr() { mvn jetty:run }
-function tmux-buffer-to-clipboard() { tmux save-buffer -|pbcopy }
-function tmux-buffer-from-clipboard() { tmux set-buffer $(pbpaste) }
-function gs() { echo IDIOT! }
-function subl() { subl -n }
-function jdk16() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.6) }
-function jdk17() { export JAVA_HOME=$(/usr/libexec/java_home -v 1.7.0_21) }
-# Use FZF to switch Tmux sessions:
-# bind-key s run "tmux new-window 'bash -ci fs'"

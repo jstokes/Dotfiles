@@ -1,15 +1,7 @@
 #!/bin/zsh
 
-# if [[ "$TERM" == "dumb" ]]
-# then
-# 	unsetopt zle
-# 	unsetopt prompt_cr
-# 	unsetopt prompt_subst
-# 	unfunction precmd
-# 	unfunction preexec
-# 	PS1='$ '
-# 	return
-# fi
+# autoload -U promptinit; promptinit
+# prompt pure
 
 autoload -U colors
 colors
@@ -30,16 +22,14 @@ bindkey -M viins "^P" fzf-file-widget
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-export EDITOR='emacs'
-export VISUAL='emacs'
 
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME=""
 
 source ~/.bin/tmuxinator.zsh
-
 source ~/.zsh/git-prompt/zshrc.sh
+source ~/.fzf.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 PROMPT=$'%{${fg[green]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 ZSH_THEME_GIT_PROMPT_PREFIX=" ["
@@ -49,12 +39,6 @@ ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[blue]%}"
 ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 GIT_PROMPT_EXECUTABLE="haskell"
 ZSH_THEME_GIT_PROMPT_CACHE=true
-
-source ~/.fzf.zsh
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export LEIN_SNAPSHOTS_IN_RELEASE=true
 
 setopt interactivecomments
 
@@ -73,5 +57,3 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY # share command history data
-
-export ANDROID_HOME="$HOME/Library/Android/sdk"

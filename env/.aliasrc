@@ -1,25 +1,9 @@
-alias mvnci="mvn clean install"
-alias mvnt="mvn test"
 alias tmux="TERM=screen-256color-bce tmux"
-alias v='mvim -v'
-alias vi='mvim -v'
-alias vim='mvim -v'
-alias vil='mvim -v $(fc)'
 alias g='git'
-alias gr='grails'
-alias mux=tmuxinator
-alias bi='bundle install'
-alias ducks='du -cks * | sort -rn | head'
-alias be='beep bundle exec'
-alias tempc='git add --all && git commit -m "Temp"'
-alias gw='./gradlew'
-alias gwcbt='./gradlew clean build test'
+alias gdfm='git fetch && git diff HEAD $(git merge-base origin/master HEAD)'
 alias rm='rm -i'
-alias e='emacsclient -t -a ""'
 alias ec='emacsclient -c'
 alias ed='emacs --debug-init'
-##alias cucumber='bundle exec cucumber'
-alias rake='bundle exec rake'
 alias ll='ls -lh'
 alias l='ls -1A'
 alias la='ll -A'
@@ -42,10 +26,5 @@ alias sftp='noglob sftp'
 alias sl=ls
 alias top=htop
 alias type='type -a'
-alias tm="tmate -S /tmp/tmate.sock new-session"
-alias tro="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh_ro}'"
-alias trw="tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'"
 alias dc=docker-compose
-alias vim='emacsclient -t'
-
 alias ldt='lein with-profile -user deps :tree 2>&1 | less -R'
