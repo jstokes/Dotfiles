@@ -75,3 +75,7 @@ scratch.clj
 
 .meghanada/
 m2/
+
+
+.clj-kondo/
+.lsp/
