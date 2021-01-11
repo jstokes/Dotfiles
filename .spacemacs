@@ -28,7 +28,7 @@ This function should only modify configuration layer settings."
           git-enable-github-support t)
      colors
      markdown
-     lsp
+     ;; lsp
      (clojure :variables
               clojure-toplevel-inside-comment-form t
               clojure-enable-clj-refactor t
