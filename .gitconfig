@@ -8,7 +8,7 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-	editor = nvim
+	editor = emacsclient --tty
   autocrlf = input
   pager = less -R
 [alias]

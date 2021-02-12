@@ -128,6 +128,8 @@ before layers configuration."
         vc-follow-symlinks t
         frame-resize-pixelwise t
         evil-ex-search-highlight-all nil
+        evil-escape-key-sequence "fd"
+        evil-escape-unordered-key-sequence t
         projectile-enable-caching t
         rust-format-on-save t)
 
