@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
-(setq doom-font (font-spec :family "Hack" :size 18))
+(setq doom-font (font-spec :family "Hack" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -92,12 +92,15 @@
 (after! smartparens
   (sp-pair "(" nil :unless '(:rem sp-point-before-word-p)))
 
+
 (map!
  :map doom-leader-map
  ;; SPC SPC = M-x, like in spacemacs
  "SPC" 'counsel-M-x
  ;; SPC sc remove highlight
- "sc" 'evil-ex-nohighlight)
+ "sc" 'evil-ex-nohighlight
+ ;; Yank ring
+ "yr" 'counsel-yank-pop)
 
 
 ;; Make recent files (that aren't buffers yet) appear in SPC b b
@@ -133,4 +136,69 @@
 
 ;; Doom modeline
 (setq doom-modeline-height 1)
-(set-face-attribute 'mode-line nil :family "Noto Sans" :height 150)
+(set-face-attribute 'mode-line nil :family "Hack" :height 150)
+
+
+(setq undo-limit 80000000           ;; Undo limit 80mb
+      evil-want-fine-undo t         ;; More graunular undo for evil
+      auto-save-default t           ;; Nobody likes to loose work, I certainly don't
+      truncate-string-ellipsis "…") ;; Unicode ellispis are nicer than "...", and also save /precious/ space
+
+;; Show battery when battery powered
+(when (not (equal "Battery status not available" (battery)))
+  (display-battery-mode 1))
+
+
+;; Split to the right and below
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+;; Preview buffers when opening splits
+(setq +ivy-buffer-preview t)
+
+;; clj-refactor keybindings
+(map!
+ :map clojure-mode-map
+ (:localleader
+  :n  "r"      nil
+  :n  "r ?"    #'cljr-describe-refactoring
+  :n  "r a d"  #'cljr-add-declaration
+  :n  "r a i"  #'cljr-add-import-to-ns
+  :n  "r a m"  #'cljr-add-missing-libspec
+  :n  "r a p"  #'cljr-add-project-dependency
+  :n  "r a r"  #'cljr-add-require-to-ns
+  :n  "r a s"  #'cljr-add-stubs
+  :n  "r a u"  #'cljr-add-use-to-ns
+  :n  "r c c"  #'cljr-cycle-coll
+  :n  "r c i"  #'cljr-cycle-if
+  :n  "r c n"  #'cljr-clean-ns
+  :n  "r c p"  #'cljr-cycle-privacy
+  :n  "r d k"  #'cljr-destructure-keys
+  :n  "r e f"  #'cljr-extract-function
+  :n  "r e c"  #'cljr-extract-constant
+  :n  "r e l"  #'cljr-expand-let
+  :n  "r f u"  #'cljr-find-usages
+  :n  "r f e"  #'cljr-create-fn-from-example
+  :n  "r h d"  #'cljr-hotload-dependency
+  :n  "r i l"  #'cljr-introduce-let
+  :n  "r i s"  #'cljr-inline-symbol
+  :n  "r m f"  #'cljr-move-form
+  :n  "r m l"  #'cljr-move-to-let
+  :n  "r p c"  #'cljr-project-clean
+  :n  "r p f"  #'cljr-promote-function
+  :n  "r r d"  #'cljr-remove-debug-fns
+  :n  "r r f"  #'cljr-rename-file-or-dir
+  :n  "r r l"  #'cljr-remove-let
+  :n  "r r r"  #'cljr-remove-unused-requires
+  :n  "r r s"  #'cljr-rename-symbol
+  :n  "r r u"  #'cljr-replace-use
+  :n  "r s n"  #'cljr-sort-ns
+  :n  "r s p"  #'cljr-sort-project-dependencies
+  :n  "r s r"  #'cljr-stop-referring
+  :n  "r s c"  #'cljr-show-changelog
+  :n  "r t f"  #'cljr-thread-first-all
+  :n  "r t h"  #'cljr-thread
+  :n  "r t l"  #'cljr-thread-last-all
+  :n  "r u a"  #'cljr-unwind-all
+  :n  "r u p"  #'cljr-update-project-dependencies
+  :n  "r u w"  #'cljr-unwind))
