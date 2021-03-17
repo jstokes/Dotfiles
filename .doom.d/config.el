@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
-(setq doom-font (font-spec :family "Hack" :size 15))
+(setq doom-font (font-spec :family "Hack" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -71,13 +71,6 @@
   :config
   (evil-lisp-state-leader "SPC k")
   (setq evil-lisp-state-global t))
-
-;; Tab to indent lines
-(map!
- :mode clojure-mode
- :mode emacs-lisp-mode
- :ni
- "<tab>" 'lisp-indent-line)
 
 ;; Fix issue where backspacing a close paren actually deletes the close paren without deleting the open paren
 ;; https://github.com/hlissner/doom-emacs/issues/4374
@@ -134,9 +127,26 @@
   (setq cider-print-fn 'puget)
   (setq cider-shadow-cljs-parameters "server -d djblue/portal:0.9.0"))
 
+;; don't close my repl window plz
+(after! cider
+  (set-popup-rule! "^*cider-repl" :quit nil :ttl nil))
+
 ;; Doom modeline
 (setq doom-modeline-height 1)
 (set-face-attribute 'mode-line nil :family "Hack" :height 150)
+
+(after! doom-modeline
+  (setq doom-modeline-persp-name t))
+
+(after! lsp-mode
+  (setq lsp-enable-file-watchers nil
+        lsp-enable-indentation nil
+        lsp-ui-doc-show-with-cursor t
+        lsp-ui-sideline-show-code-actions nil
+        lsp-ui-doc-enable t
+        lsp-lens-enable t
+        lsp-enable-symbol-highlighting nil
+        lsp-signature-render-documentation t))
 
 
 (setq undo-limit 80000000           ;; Undo limit 80mb
@@ -202,3 +212,42 @@
   :n  "r u a"  #'cljr-unwind-all
   :n  "r u p"  #'cljr-update-project-dependencies
   :n  "r u w"  #'cljr-unwind))
+
+
+(map!
+ :after lsp-mode
+ (:leader
+  :n  "l"      nil
+  :n  "l l"    #'lsp-ui-imenu
+  :n  "l a i"  #'lsp-clojure-add-import-to-namespace
+  :n  "l a m"  #'lsp-clojure-add-missing-libspec
+  :n  "l c c"  #'lsp-clojure-cycle-coll
+  :n  "l c n"  #'lsp-clojure-clean-ns
+  :n  "l c p"  #'lsp-clojure-cycle-privacy
+  :n  "l e f"  #'lsp-clojure-extract-function
+  :n  "l e l"  #'lsp-clojure-expand-let
+  :n  "l f u"  #'lsp-find-references
+  :n  "l i l"  #'lsp-clojure-introduce-let
+  :n  "l i s"  #'lsp-clojure-inline-symbol
+  :n  "l m l"  #'lsp-clojure-move-to-let
+  :n  "l r l"  #'lsp-clojure-expand-let
+  :n  "l r s"  #'lsp-rename
+  :n  "l s n"  #'lsp-clojure-clean-ns
+  :n  "l t f"  #'lsp-clojure-thread-first-all
+  :n  "l t h"  #'lsp-clojure-thread-first
+  :n  "l t l"  #'lsp-clojure-thread-last-all
+  :n  "l u a"  #'lsp-clojure-unwind-all
+  :n  "l u w"  #'lsp-clojure-unwind-thread))
+
+
+;; Admin repl!
+(defun admin-repl (cluster)
+  (interactive "sCluster: ")
+  (message (format "Connecting to %s." cluster))
+  (shell-command (format "~/work/app/service/admin/admin-repl/repl.sh %s start" cluster))
+  (cl-destructuring-bind (host port) (split-string
+                                      (shell-command-to-string
+                                       (format "~/work/app/service/admin/admin-repl/repl.sh %s addr" cluster)))
+    (cider-connect-clj (list :host host
+                             :port port
+                             :project-dir "~/work/app/service/admin/admin-repl"))))
