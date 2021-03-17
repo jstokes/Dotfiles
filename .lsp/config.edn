@@ -1,0 +1,14 @@
+{:cljfmt {:indentation? false
+          :remove-trailing-whitespace? false
+          :remove-surrounding-whitespace? false
+          :remove-consecutive-blank-lines? false
+          :remove-multiple-non-indenting-spaces? false
+          :split-keypairs-over-multiple-lines? false}
+ :log-path "/tmp/clojure-lsp.out"
+ :semantic-tokens? true
+ :show-docs-arity-on-same-line? true
+ :text-document-sync-kind :full
+ :auto-add-ns-to-new-files? true
+ :dependency-scheme "jar"
+ :project-specs [{:project-path "project.clj"
+                  :classpath-cmd ["lein" "monolith" "with-all" "classpath"]}]}
