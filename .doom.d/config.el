@@ -143,6 +143,7 @@
         lsp-enable-indentation nil
         lsp-ui-doc-show-with-cursor t
         lsp-ui-sideline-show-code-actions nil
+        lsp-modeline-code-actions-enable nil
         lsp-ui-doc-enable t
         lsp-lens-enable t
         lsp-enable-symbol-highlighting nil
