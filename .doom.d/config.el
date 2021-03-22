@@ -118,6 +118,9 @@
  'cljstyle "/usr/local/bin/cljstyle pipe"
  :modes '(clojure-mode clojurescript-mode))
 
+(setq-hook! 'cloure-mode-hook +format-with-lsp nil)
+(setq-hook! 'clojurescript-mode-hook +format-with-lsp nil)
+
 ;; fd to escape
 (setq evil-escape-key-sequence "fd")
 
@@ -144,6 +147,7 @@
         lsp-ui-doc-show-with-cursor t
         lsp-ui-sideline-show-code-actions nil
         lsp-modeline-code-actions-enable nil
+        lsp-completion-enable-additional-text-edit nil
         lsp-ui-doc-enable t
         lsp-lens-enable t
         lsp-enable-symbol-highlighting nil
