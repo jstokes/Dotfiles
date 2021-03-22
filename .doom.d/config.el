@@ -118,7 +118,7 @@
  'cljstyle "/usr/local/bin/cljstyle pipe"
  :modes '(clojure-mode clojurescript-mode))
 
-(setq-hook! 'cloure-mode-hook +format-with-lsp nil)
+(setq-hook! 'clojure-mode-hook +format-with-lsp nil)
 (setq-hook! 'clojurescript-mode-hook +format-with-lsp nil)
 
 ;; fd to escape
