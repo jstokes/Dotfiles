@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 ;;
-(setq doom-font (font-spec :family "Hack" :size 17))
+(setq doom-font (font-spec :family "Iosevka" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -115,10 +115,13 @@
 
 ;; Set cljstyle formatter
 (set-formatter!
- 'cljstyle "/usr/local/bin/cljstyle pipe"
- :modes '(clojure-mode clojurescript-mode))
+  'cljstyle "/usr/local/bin/cljstyle pipe"
+  :modes '(clojure-mode clojurescript-mode))
+
+(add-hook! 'before-save-hook #'+format/buffer)
 
 (setq-hook! 'clojure-mode-hook +format-with-lsp nil)
+(setq-hook! 'clojurec-mode-hook +format-with-lsp nil)
 (setq-hook! 'clojurescript-mode-hook +format-with-lsp nil)
 
 ;; fd to escape
@@ -128,7 +131,8 @@
   (setq clojure-indent-style 'align-arguments)
   (setq cider-default-cljs-repl 'shadow)
   (setq cider-print-fn 'puget)
-  (setq cider-shadow-cljs-parameters "server -d djblue/portal:0.9.0"))
+  (setq cider-shadow-cljs-parameters "server -d djblue/portal:0.9.0")
+  (setq cider-enrich-classpath t))
 
 ;; don't close my repl window plz
 (after! cider
@@ -136,7 +140,7 @@
 
 ;; Doom modeline
 (setq doom-modeline-height 1)
-(set-face-attribute 'mode-line nil :family "Hack" :height 150)
+(set-face-attribute 'mode-line nil :family "Iosevka" :height 140)
 
 (after! doom-modeline
   (setq doom-modeline-persp-name t))
@@ -170,6 +174,9 @@
 
 ;; Preview buffers when opening splits
 (setq +ivy-buffer-preview t)
+
+;; git-link should default to `master' branch
+(setq git-link-default-branch "master")
 
 ;; clj-refactor keybindings
 (map!
