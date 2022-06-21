@@ -120,9 +120,9 @@
 
 (add-hook! 'before-save-hook #'+format/buffer)
 
-(setq-hook! 'clojure-mode-hook +format-with-lsp nil)
-(setq-hook! 'clojurec-mode-hook +format-with-lsp nil)
-(setq-hook! 'clojurescript-mode-hook +format-with-lsp nil)
+;; (setq-hook! 'clojure-mode-hook +format-with-lsp nil)
+;; (setq-hook! 'clojurec-mode-hook +format-with-lsp nil)
+;; (setq-hook! 'clojurescript-mode-hook +format-with-lsp nil)
 
 ;; fd to escape
 (setq evil-escape-key-sequence "fd")
@@ -145,17 +145,17 @@
 (after! doom-modeline
   (setq doom-modeline-persp-name t))
 
-(after! lsp-mode
-  (setq lsp-enable-file-watchers nil
-        lsp-enable-indentation nil
-        lsp-ui-doc-show-with-cursor t
-        lsp-ui-sideline-show-code-actions nil
-        lsp-modeline-code-actions-enable nil
-        lsp-completion-enable-additional-text-edit nil
-        lsp-ui-doc-enable t
-        lsp-lens-enable t
-        lsp-enable-symbol-highlighting nil
-        lsp-signature-render-documentation t))
+;; (after! lsp-mode
+;;   (setq lsp-enable-file-watchers nil
+;;         lsp-enable-indentation nil
+;;         lsp-ui-doc-show-with-cursor t
+;;         lsp-ui-sideline-show-code-actions nil
+;;         lsp-modeline-code-actions-enable nil
+;;         lsp-completion-enable-additional-text-edit nil
+;;         lsp-ui-doc-enable t
+;;         lsp-lens-enable t
+;;         lsp-enable-symbol-highlighting nil
+;;         lsp-signature-render-documentation t))
 
 
 (setq undo-limit 80000000           ;; Undo limit 80mb
@@ -226,40 +226,40 @@
   :n  "r u w"  #'cljr-unwind))
 
 
-(map!
- :after lsp-mode
- (:leader
-  :n  "l"      nil
-  :n  "l l"    #'lsp-ui-imenu
-  :n  "l a i"  #'lsp-clojure-add-import-to-namespace
-  :n  "l a m"  #'lsp-clojure-add-missing-libspec
-  :n  "l c c"  #'lsp-clojure-cycle-coll
-  :n  "l c n"  #'lsp-clojure-clean-ns
-  :n  "l c p"  #'lsp-clojure-cycle-privacy
-  :n  "l e f"  #'lsp-clojure-extract-function
-  :n  "l e l"  #'lsp-clojure-expand-let
-  :n  "l f u"  #'lsp-find-references
-  :n  "l i l"  #'lsp-clojure-introduce-let
-  :n  "l i s"  #'lsp-clojure-inline-symbol
-  :n  "l m l"  #'lsp-clojure-move-to-let
-  :n  "l r l"  #'lsp-clojure-expand-let
-  :n  "l r s"  #'lsp-rename
-  :n  "l s n"  #'lsp-clojure-clean-ns
-  :n  "l t f"  #'lsp-clojure-thread-first-all
-  :n  "l t h"  #'lsp-clojure-thread-first
-  :n  "l t l"  #'lsp-clojure-thread-last-all
-  :n  "l u a"  #'lsp-clojure-unwind-all
-  :n  "l u w"  #'lsp-clojure-unwind-thread))
+;; (map!
+;;  :after lsp-mode
+;;  (:leader
+;;   :n  "l"      nil
+;;   :n  "l l"    #'lsp-ui-imenu
+;;   :n  "l a i"  #'lsp-clojure-add-import-to-namespace
+;;   :n  "l a m"  #'lsp-clojure-add-missing-libspec
+;;   :n  "l c c"  #'lsp-clojure-cycle-coll
+;;   :n  "l c n"  #'lsp-clojure-clean-ns
+;;   :n  "l c p"  #'lsp-clojure-cycle-privacy
+;;   :n  "l e f"  #'lsp-clojure-extract-function
+;;   :n  "l e l"  #'lsp-clojure-expand-let
+;;   :n  "l f u"  #'lsp-find-references
+;;   :n  "l i l"  #'lsp-clojure-introduce-let
+;;   :n  "l i s"  #'lsp-clojure-inline-symbol
+;;   :n  "l m l"  #'lsp-clojure-move-to-let
+;;   :n  "l r l"  #'lsp-clojure-expand-let
+;;   :n  "l r s"  #'lsp-rename
+;;   :n  "l s n"  #'lsp-clojure-clean-ns
+;;   :n  "l t f"  #'lsp-clojure-thread-first-all
+;;   :n  "l t h"  #'lsp-clojure-thread-first
+;;   :n  "l t l"  #'lsp-clojure-thread-last-all
+;;   :n  "l u a"  #'lsp-clojure-unwind-all
+;;   :n  "l u w"  #'lsp-clojure-unwind-thread))
 
 
 ;; Admin repl!
 (defun admin-repl (cluster)
   (interactive "sCluster: ")
   (message (format "Connecting to %s." cluster))
-  (shell-command (format "~/work/app/service/admin/admin-repl/repl.sh %s start" cluster))
+  (shell-command (format "~/work/app/bin/admin-repl %s start" cluster))
   (cl-destructuring-bind (host port) (split-string
                                       (shell-command-to-string
-                                       (format "~/work/app/service/admin/admin-repl/repl.sh %s addr" cluster)))
+                                       (format "~/work/app/bin/admin-repl %s addr" cluster)))
     (cider-connect-clj (list :host host
                              :port port
                              :project-dir "~/work/app/service/admin/admin-repl"))))
