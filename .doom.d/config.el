@@ -175,8 +175,8 @@
 ;; Preview buffers when opening splits
 (setq +ivy-buffer-preview t)
 
-;; git-link should default to `master' branch
-(setq git-link-default-branch "master")
+;; git-link should default to `main' branch
+(setq git-link-default-branch "main")
 
 ;; clj-refactor keybindings
 (map!
