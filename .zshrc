@@ -57,3 +57,25 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY # share command history data
+setopt autocd
+export PATH="/usr/local/opt/terraform@0.13/bin:$PATH"
+export PATH="/Users/jeff/.emacs.d/bin:$PATH"
+export PATH="$PATH:$HOME/.babashka/bbin/bin"
+
+
+export AWS_PROFILE=dev
+
+aws-profile () {
+  export AWS_PROFILE="$1"
+  aws sso login
+  aws configure list
+}
+
+aws-sts () {
+  aws sts get-caller-identity > /dev/null
+  if [ $? -ne 0 ]; then
+    aws sso login
+  fi
+  eval "$(aws2-wrap --export)"
+  aws configure list
+}

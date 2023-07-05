@@ -1,4 +1,3 @@
-for file in ~/env/.*
-do
+for file in ~/env/.*; do
     source "$file"
 done

@@ -81,3 +81,4 @@ m2/
 .vscode/
 .calva/
 .shadow-cljs
+.dir-locals.el

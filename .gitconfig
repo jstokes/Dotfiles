@@ -39,6 +39,8 @@
   review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
   dfc = diff --color-words
   sh = show head --format="%H" -s
+[fetch]
+  prune = true
 [color]
   ui = true
 [push]

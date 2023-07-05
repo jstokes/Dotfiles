@@ -116,9 +116,12 @@
 ;; Set cljstyle formatter
 (set-formatter!
   'cljstyle "/usr/local/bin/cljstyle pipe"
-  :modes '(clojure-mode clojurescript-mode))
+  :modes '(clojure-mode clojurescript-mode clojurec-mode))
+
 
 (add-hook! 'before-save-hook #'+format/buffer)
+
+;; (remove-hook! 'before-save-hook #'+format/buffer)
 
 ;; (setq-hook! 'clojure-mode-hook +format-with-lsp nil)
 ;; (setq-hook! 'clojurec-mode-hook +format-with-lsp nil)
@@ -137,6 +140,15 @@
 ;; don't close my repl window plz
 (after! cider
   (set-popup-rule! "^*cider-repl" :quit nil :ttl nil))
+
+
+;; magit cfg
+;; (add-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-pushremote)
+;; (add-hook 'magit-status-sections-hook 'magit-insert-unpushed-to-upstream-or-recent)
+;; (add-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
+;; (add-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+;; (add-hook 'magit-status-sections-hook 'magit-insert-stashes)
+
 
 ;; Doom modeline
 (setq doom-modeline-height 1)
