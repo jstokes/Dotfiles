@@ -16,38 +16,36 @@
   ;; :pedantic? ^:replace nope
 
   :plugins
-  [[org.clojure/clojure "1.10.1"]
-   [cider/cider-nrepl "0.25.6"]
-   [lein-ancient "0.6.15"]
-   [refactor-nrepl "2.5.0"]
-   [lein-monolith "1.6.1"]
-   [lein-hiera "1.1.0"]
+  [[org.clojure/clojure "1.11.1"]
+   [cider/cider-nrepl "0.31.0"]
+   [lein-ancient "0.7.0"]
+   [refactor-nrepl "3.7.1"]
+   [lein-monolith "1.8.0"]
+   [lein-hiera "2.0.0"]
    [lein-vanity "0.2.0"]
    [lein-collisions "0.1.4"]
-   #_[amperity-service/lein-template "MONOLITH-SNAPSHOT"]
    [lein-environ "1.2.0"]
    [lein-marginalia "0.9.1"]
    [lein-cprint "1.3.3" :exclusions [mvxcvi/puget]]
-   [lein-cloverage "1.2.2"]
+   [lein-cloverage "1.2.4"]
    [mvxcvi/whidbey "2.2.1"]
-   [com.jakemccrary/lein-test-refresh "0.24.1"]
-   [lein-collisions "0.1.4"]
-   [io.aviso/pretty "0.1.37"]]
+   [com.jakemccrary/lein-test-refresh "0.25.0" :exclusions [org.clojure/tools.cli]]
+   [io.aviso/pretty "1.4.4"]]
 
   :aliases
   {"refresh" ["do" "monolith" "each" ":refresh" "build" ":upstream" ":skip"
               :project/name ":parallel" "4" "install,"]}
 
   :dependencies
-  [[nrepl "0.8.3"]
-   [hashp "0.2.0"]
+  [[nrepl "1.0.0"]
+   [hashp "0.2.2"]
    [criterium "0.4.6"]
-   [eftest "0.5.9"]
-   [pjstadig/humane-test-output "0.10.0"]
-   [com.clojure-goes-fast/clj-memory-meter "0.1.2"]
-   [com.clojure-goes-fast/clj-async-profiler "0.1.3"]
-   [com.clojure-goes-fast/clj-java-decompiler "0.3.0"]
-   [io.aviso/pretty "0.1.37"]
+   [eftest "0.6.0"]
+   [pjstadig/humane-test-output "0.11.0"]
+   [com.clojure-goes-fast/clj-memory-meter "0.3.0"]
+   [com.clojure-goes-fast/clj-async-profiler "1.0.4"]
+   [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
+   [io.aviso/pretty "1.4.4"]
    [clj-stacktrace "0.2.8"]]
 
   :deploy-repositories
