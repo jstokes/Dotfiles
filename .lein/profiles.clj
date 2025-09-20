@@ -1,10 +1,6 @@
 {:user
  {:injections
   [(require 'hashp.core)
-   (require '[clj-memory-meter.core :as mm])
-   (require '[clj-async-profiler.core :as prof])
-   (require '[clj-java-decompiler.core :refer [decompile]])
-   (require '[eftest.runner :refer [find-tests run-tests]])
    (require 'pjstadig.humane-test-output)
    (let [pct-var (ns-resolve (doto 'clojure.stacktrace require) 'print-cause-trace)
          pst-var (ns-resolve (doto 'clj-stacktrace.repl require) 'pst+)]
@@ -13,23 +9,19 @@
    (pjstadig.humane-test-output/activate!)]
 
   :local-repo #=(eval (System/getenv "LEIN_M2"))
-  ;; :pedantic? ^:replace nope
 
+  :jvm-opts ["-Djdk.attach.allowAttachSelf"]
   :plugins
-  [[org.clojure/clojure "1.11.1"]
-   [cider/cider-nrepl "0.31.0"]
-   [lein-ancient "0.7.0"]
-   [refactor-nrepl "3.7.1"]
-   [lein-monolith "1.8.0"]
+  [[lein-monolith "1.10.3"]
    [lein-hiera "2.0.0"]
-   [lein-vanity "0.2.0"]
-   [lein-collisions "0.1.4"]
    [lein-environ "1.2.0"]
-   [lein-marginalia "0.9.1"]
    [lein-cprint "1.3.3" :exclusions [mvxcvi/puget]]
+   [lein-collisions "0.1.4"]
    [lein-cloverage "1.2.4"]
+   [lein-codox "0.10.8"]
+   [amperity-service/lein-template "MONOLITH-SNAPSHOT"]
    [mvxcvi/whidbey "2.2.1"]
-   [com.jakemccrary/lein-test-refresh "0.25.0" :exclusions [org.clojure/tools.cli]]
+   [com.jakemccrary/lein-test-refresh "0.25.0"]
    [io.aviso/pretty "1.4.4"]]
 
   :aliases
@@ -37,14 +29,11 @@
               :project/name ":parallel" "4" "install,"]}
 
   :dependencies
-  [[nrepl "1.0.0"]
+  [[nrepl "1.3.0"]
    [hashp "0.2.2"]
    [criterium "0.4.6"]
-   [eftest "0.6.0"]
+   [mvxcvi/puget "1.3.4"]
    [pjstadig/humane-test-output "0.11.0"]
-   [com.clojure-goes-fast/clj-memory-meter "0.3.0"]
-   [com.clojure-goes-fast/clj-async-profiler "1.0.4"]
-   [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
    [io.aviso/pretty "1.4.4"]
    [clj-stacktrace "0.2.8"]]
 
@@ -78,7 +67,14 @@
               'org.joda.time.DateTime {'joda/inst str}
               'org.joda.time.UTCDateTimeZone {'joda/zone str}}}
 
- :test-refresh {:notify-command ["terminal-notifier" "-title" "Tests" "-message"]}
-
  :profiling
- {:jvm-opts ["-agentpath:/Applications/YourKit-Java-Profiler-2018.04.app/Contents/Resources/bin/mac/libyjpagent.jnilib"]}}
+ {:dependencies [[com.clojure-goes-fast/clj-memory-meter "0.3.0"]
+                 [com.clojure-goes-fast/clj-async-profiler "1.0.4"]
+                 [com.clojure-goes-fast/clj-java-decompiler "0.3.4"]
+                 [com.clojure-goes-fast/jvm-alloc-rate-meter "0.1.4"]]
+  :jvm-opts ["-Djdk.attach.allowAttachSelf"]}
+
+ :cider/repl ^:repl
+ {:plugins [[lein-monolith "1.10.0" :exclusions [org.clojure/tools.logging]]
+            [refactor-nrepl "3.10.0"]
+            [cider/cider-nrepl "0.55.7"]]}}
