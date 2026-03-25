@@ -77,8 +77,25 @@ scratch.clj
 m2/
 
 .clj-kondo/
+.clojure-lsp/
 .lsp/
 .vscode/
 .calva/
 .shadow-cljs
 .dir-locals.el
+.zed
+.voidrules
+memory-bank/
+.clinerules
+.joyride/
+
+# Fiddle files #
+################
+*.fiddle
+.cljfmt.edn
+
+# Claude #
+##########
+.claude/.trees/
+.trees
+.claude/worktrees

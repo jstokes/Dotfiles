@@ -1,1 +1,4 @@
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv >virtualenv-init -)"; fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jeff/.lmstudio/bin"
+# End of LM Studio CLI section

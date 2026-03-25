@@ -12,14 +12,14 @@
 
   :jvm-opts ["-Djdk.attach.allowAttachSelf"]
   :plugins
-  [[lein-monolith "1.10.3"]
+  [[lein-monolith "1.10.4"]
    [lein-hiera "2.0.0"]
    [lein-environ "1.2.0"]
    [lein-cprint "1.3.3" :exclusions [mvxcvi/puget]]
    [lein-collisions "0.1.4"]
    [lein-cloverage "1.2.4"]
    [lein-codox "0.10.8"]
-   [amperity-service/lein-template "MONOLITH-SNAPSHOT"]
+   #_[amperity-service/lein-template "MONOLITH-SNAPSHOT"]
    [mvxcvi/whidbey "2.2.1"]
    [com.jakemccrary/lein-test-refresh "0.25.0"]
    [io.aviso/pretty "1.4.4"]]

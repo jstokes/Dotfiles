@@ -1,6 +1,8 @@
 [user]
   name = Jeff Stokes
-  email = jeff@amperity.com
+  email = jeffecu88@gmail.com
+[include]
+  path = ~/.gitconfig.work
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0
@@ -8,9 +10,8 @@
   bare = false
   logallrefupdates = true
   ignorecase = false
-	editor = emacsclient --tty
+  editor = nvim
   autocrlf = input
-  pager = less -R
 [alias]
   us = reset HEAD
   uc = reset --soft HEAD^
@@ -39,6 +40,11 @@
   review = !git push origin HEAD:refs/for/`git rev-parse --abbrev-ref HEAD`
   dfc = diff --color-words
   sh = show head --format="%H" -s
+  wt = worktree
+  wta = "!f() { branch=\"$1\"; from=\"$2\"; if [ -z \"$branch\" ]; then echo \"Usage: git wta <branch> [branch-from]\"; return 2; fi; if [ -z \"$from\" ]; then from=\"origin/main\"; fi; root=\"$(git rev-parse --show-toplevel 2>/dev/null)\" || { echo \"Not a git repository\"; return 2; }; path=\"$root/.trees/$branch\"; mkdir -p \"$path\"; git fetch --quiet origin \"$branch\" >/dev/null 2>&1 || true; if git show-ref --verify --quiet \"refs/heads/$branch\"; then git worktree add \"$path\" \"$branch\"; elif git show-ref --verify --quiet \"refs/remotes/origin/$branch\"; then git worktree add --track -b \"$branch\" \"$path\" \"origin/$branch\"; else git worktree add -b \"$branch\" \"$path\" \"$from\"; fi; cd \"$path\" || exit 1; if [ -t 1 ]; then exec \"${SHELL:-bash}\"; fi; }; f"
+  wtl = worktree list
+  wtr = worktree remove
+  wtm = worktree move
 [fetch]
   prune = true
 [color]
@@ -48,10 +54,8 @@
 [help]
   autocorrect = 1
 [pull]
-	rebase = true
+  rebase = true
 [rerere]
-	enabled = true
-[magit]
-	hideCampaign = true
+  enabled = true
 [github]
-	user = jstokes
+  user = jstokes

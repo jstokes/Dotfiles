@@ -20,6 +20,7 @@ fi
 export EDITOR='nano'
 export VISUAL='nano'
 export PAGER='less'
+alias gh='PAGER=cat gh'
 
 #
 # Language
@@ -79,3 +80,5 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="$PATH:/Users/jeff/.local/bin"

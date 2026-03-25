@@ -1,5 +1,16 @@
+# Work-specific configs (loaded conditionally)
+.zshrc.work
+.gitconfig.work
+env/.amperityrc
+
+# Legacy editor configs
+.doom.d/
+.spacemacs
+
+# Other
 .slirc
 .appiarc
 .hashrc
+.lein-env
 *.elc
-env/.amperityrc
+host.el
