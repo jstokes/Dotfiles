@@ -57,5 +57,7 @@
   rebase = true
 [rerere]
   enabled = true
+[diff]
+  external = difft
 [github]
   user = jstokes

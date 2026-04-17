@@ -171,3 +171,8 @@ alias claude-mem='bun "/Users/jeff/.claude/plugins/cache/thedotmack/claude-mem/1
 
 # Source work-specific config if it exists
 [[ -f ~/.zshrc.work ]] && source ~/.zshrc.work
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jeff/.lmstudio/bin"
+# End of LM Studio CLI section
+

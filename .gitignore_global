@@ -99,3 +99,4 @@ memory-bank/
 .claude/.trees/
 .trees
 .claude/worktrees
+.agents/
