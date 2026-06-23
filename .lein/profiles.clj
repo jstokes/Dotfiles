@@ -12,7 +12,7 @@
 
   :jvm-opts ["-Djdk.attach.allowAttachSelf"]
   :plugins
-  [[lein-monolith "1.10.4"]
+  [[lein-monolith "1.11.0"]
    [lein-hiera "2.0.0"]
    [lein-environ "1.2.0"]
    [lein-cprint "1.3.3" :exclusions [mvxcvi/puget]]
