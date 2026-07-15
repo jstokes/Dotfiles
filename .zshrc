@@ -67,7 +67,7 @@ fi
 export PATH="$PATH:$HOME/.babashka/bbin/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:/Users/jeff/.local/bin"
+export PATH="/Users/jeff/.local/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 
 export EDITOR=nvim
@@ -89,3 +89,13 @@ fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 autoload -U promptinit; promptinit
 prompt pure
+
+# agy --prompt-interactive shortcut
+agyp() {
+  agy --prompt-interactive "$*"
+}
+
+# agy --prompt shortcut
+agydo() {
+  agy --prompt "$*"
+}
