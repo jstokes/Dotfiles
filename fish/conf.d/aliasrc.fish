@@ -1,4 +1,4 @@
-alias tmux="env TERM=screen-256color-bce tmux"
+alias tmux="env TERM=screen-256color-bce command tmux"
 alias g='git'
 alias gdfm='git fetch; and git diff HEAD (git merge-base origin/master HEAD)'
 alias ec='emacsclient -c'
