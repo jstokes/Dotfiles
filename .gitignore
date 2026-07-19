@@ -14,3 +14,4 @@ env/.amperityrc
 .lein-env
 *.elc
 host.el
+fish/conf.d/secrets.fish

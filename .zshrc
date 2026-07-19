@@ -99,3 +99,6 @@ agyp() {
 agydo() {
   agy --prompt "$*"
 }
+
+# kimi-code
+export PATH="/Users/jeff/.kimi-code/bin:$PATH"
