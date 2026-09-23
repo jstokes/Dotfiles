@@ -33,10 +33,12 @@ end
 
 fish_add_path "$HOME/.cargo/bin"
 
-if test -f /opt/homebrew/bin/brew
-    eval (/opt/homebrew/bin/brew shellenv)
-else if test -f /home/linuxbrew/.linuxbrew/bin/brew
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if not type -q brew
+    if test -f /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+    else if test -f /home/linuxbrew/.linuxbrew/bin/brew
+        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    end
 end
 
 fish_add_path "$HOME/.local/bin"
