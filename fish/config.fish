@@ -160,6 +160,7 @@ if status is-interactive
 
     # Enable vi key bindings
     fish_vi_key_bindings
+    set -g fish_sequence_key_delay_ms 200
 
     # Load fzf shell integration
     if type -q fzf
@@ -172,6 +173,9 @@ if status is-interactive
 
     # User key bindings (automatically executed by fish when key bindings initialize)
     function fish_user_key_bindings
+        # Switch from insert mode to normal mode with 'fd'
+        bind -M insert -m default fd backward-char force-repaint
+
         # Ensure fzf key bindings (including Ctrl+R for history search) apply in vi mode
         if functions -q fzf_key_bindings
             fzf_key_bindings
