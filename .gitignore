@@ -1,5 +1,6 @@
 # Work-specific configs (loaded conditionally)
-.zshrc.work
+fish/config.work.fish
+.fishrc.work
 .gitconfig.work
 env/.amperityrc
 

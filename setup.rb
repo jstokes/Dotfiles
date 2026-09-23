@@ -22,6 +22,7 @@ end
 links.each do |link|
   symlink = get_symlink(link)
   src = File.join(current_dir, link)
+  next unless File.exist?(src)
 
   puts "linking #{src} -> #{symlink}"
   FileUtils.mkdir_p(File.dirname(symlink))
