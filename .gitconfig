@@ -1,8 +1,6 @@
 [user]
   name = Jeff Stokes
   email = jeffecu88@gmail.com
-[include]
-  path = ~/.gitconfig.work
 [core]
   excludesfile = ~/.gitignore_global
   repositoryformatversion = 0

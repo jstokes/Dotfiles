@@ -28,13 +28,6 @@ ruby setup.rb
 | `.lsp/config.edn` | clojure-lsp settings |
 | `env/` | Shell aliases, environment and helper scripts |
 
-## Work-specific config
-
-Work-specific settings are loaded from gitignored files if they exist:
-
-- **`~/.config/fish/config.work.fish`** or **`~/.fishrc.work`** -- sourced at the end of `config.fish`
-- **`~/.gitconfig.work`** -- included by `.gitconfig` (work email override)
-- **`~/env/.amperityrc`** -- sourced if present
 
 ## Dependencies
 

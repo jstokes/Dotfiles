@@ -38,7 +38,7 @@
    [clj-stacktrace "0.2.8"]]
 
   :deploy-repositories
-  [["local-jars" "file:///Users/jeff/work/dev/local-jars/"]]
+  [["local-jars" #=(eval (str "file://" (System/getenv "HOME") "/work/dev/local-jars/"))]]
 
   :repl-options
   {:timeout 480000}
