@@ -3,3 +3,8 @@
 [user]
 name = "Jeff Stokes"
 email = "jeffecu88@gmail.com"
+
+[aliases]
+df = ["diff"]
+ph = ["git", "push"]
+fetch = ["git", "fetch"]
