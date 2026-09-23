@@ -10,10 +10,8 @@ links = `git ls-tree --name-only HEAD`.lines.map(&:strip).select { |x| !ignored.
 def get_symlink(file_name)
   home_dir = File.expand_path("~")
   case file_name
-  when "fish"
-    File.join(home_dir, ".config", "fish")
-  when "ghostty"
-    File.join(home_dir, ".config", "ghostty")
+  when "fish", "ghostty", "jj"
+    File.join(home_dir, ".config", file_name)
   else
     File.join(home_dir, file_name)
   end
