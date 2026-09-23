@@ -79,9 +79,13 @@ fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
-export PATH="$PATH:/Users/jeff/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.

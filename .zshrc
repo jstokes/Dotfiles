@@ -33,7 +33,13 @@ function zle-line-init {
 zle -N zle-line-init
 
 if [[ -z "${CLAUDECODE}" ]]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  elif command -v brew >/dev/null 2>&1 && [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+    source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  elif [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
 fi
 
 setopt interactivecomments
@@ -62,33 +68,54 @@ if [ -f ~/.gnupg/gpg-agent.conf ] && command -v gpgconf &>/dev/null; then
 fi
 
 # bun completions
-[ -s "/Users/jeff/.bun/_bun" ] && source "/Users/jeff/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 export PATH="$PATH:$HOME/.babashka/bbin/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/Users/jeff/.local/bin:$PATH"
-export PATH=~/.npm-global/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 export EDITOR=nvim
 
 # pnpm
-export PNPM_HOME="/Users/jeff/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+if [[ -d "$HOME/Library/pnpm" ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+elif [[ -d "$HOME/.local/share/pnpm" ]]; then
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+if [[ -n "$PNPM_HOME" ]]; then
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
 
 # Workaround for Claude Code shopt issue
 shopt() {
   return 0
 }
 
-export PATH="$PATH:/Users/jeff/.lmstudio/bin"
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# LM Studio
+[ -d "$HOME/.lmstudio/bin" ] && export PATH="$PATH:$HOME/.lmstudio/bin"
+
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+fi
+
+if command -v brew >/dev/null 2>&1; then
+  fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fi
 
 autoload -U promptinit; promptinit
-prompt pure
+if prompt -l 2>/dev/null | grep -qw pure; then
+  prompt pure
+elif [[ -f ~/.zsh/git-prompt.zsh/examples/pure.zsh ]]; then
+  source ~/.zsh/git-prompt.zsh/git-prompt.zsh
+  source ~/.zsh/git-prompt.zsh/examples/pure.zsh
+fi
 
 # agy --prompt-interactive shortcut
 agyp() {
@@ -101,4 +128,21 @@ agydo() {
 }
 
 # kimi-code
-export PATH="/Users/jeff/.kimi-code/bin:$PATH"
+[ -d "$HOME/.kimi-code/bin" ] && export PATH="$HOME/.kimi-code/bin:$PATH"
+
+# opencode
+[ -d "$HOME/.opencode/bin" ] && export PATH="$HOME/.opencode/bin:$PATH"
+
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -d "$HOME/go-local/go/bin" ] && export PATH="$PATH:$HOME/go-local/go/bin"
+
+# Added by Antigravity CLI installer
+export PATH="$HOME/.local/bin:$PATH"
+
+# Source work-specific config if it exists
+[[ -f ~/.zshrc.work ]] && source ~/.zshrc.work
