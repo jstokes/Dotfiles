@@ -1,4 +1,3 @@
-alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias gdfm='git fetch && git diff HEAD $(git merge-base origin/master HEAD)'
 alias ec='emacsclient -c'
