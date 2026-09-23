@@ -13,7 +13,12 @@ fish_add_path "/usr/local/opt/ruby/bin"
 if type -q gem
     fish_add_path (gem environment gemdir)/bin
 end
-fish_add_path "/Users/jeff/Library/Python/3.12/bin"
+if test -d "$HOME/Library/Python/3.12/bin"
+    fish_add_path "$HOME/Library/Python/3.12/bin"
+end
+if test -d "/snap/bin"
+    fish_add_path "/snap/bin"
+end
 
 set -gx TERM "screen-256color"
 set -gx LEIN_SNAPSHOTS_IN_RELEASE "true"
@@ -21,8 +26,8 @@ set -gx EDITOR "nvim"
 set -gx VISUAL "less"
 set -gx LESS "-F -g -i -M -r -+S -w -X -z-4"
 
-if type -q brew
-    set -gx M2_HOME "(brew --prefix maven)/libexec"
+if type -q brew; and brew --prefix maven >/dev/null 2>&1
+    set -gx M2_HOME (brew --prefix maven)/libexec
 end
 
 set -gx JAVA_OPTS "$JAVA_OPTS -XX:-OmitStackTraceInFastThrow -XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints"

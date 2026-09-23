@@ -26,7 +26,7 @@ if not test -d "$TMPDIR"
     mkdir -p -m 700 "$TMPDIR"
 end
 
-set -g TMPPREFIX (string trim -r -c / "$TMPDIR")"/zsh"
+set -g TMPPREFIX (string trim -r -c / "$TMPDIR")"/fish"
 if not test -d "$TMPPREFIX"
     mkdir -p "$TMPPREFIX"
 end
@@ -35,9 +35,11 @@ fish_add_path "$HOME/.cargo/bin"
 
 if test -f /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
+else if test -f /home/linuxbrew/.linuxbrew/bin/brew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
-fish_add_path "/Users/jeff/.local/bin"
+fish_add_path "$HOME/.local/bin"
 
 # Added by OrbStack: command-line tools and integration
 if test -f ~/.orbstack/shell/init.fish

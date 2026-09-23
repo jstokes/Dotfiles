@@ -6,7 +6,6 @@ if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-[ ! -d ~/.zsh/git-prompt ] && git clone git@github.com:olivierverdier/zsh-git-prompt.git ~/.zsh/git-prompt
 [ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 brew install tmux
@@ -18,9 +17,13 @@ brew install cmake
 brew install tree
 brew install maven
 brew install wget
-brew install zsh
+brew install fish
 brew install ruby
-brew install zsh-syntax-highlighting
 brew install neovim
 
 ruby setup.rb
+
+if command -v fish >/dev/null 2>&1; then
+  fish -c "type -q fisher || (curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher)"
+  fish -c "fisher update"
+fi
