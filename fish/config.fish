@@ -162,6 +162,9 @@ if status is-interactive
     fish_vi_key_bindings
     set -g fish_sequence_key_delay_ms 200
 
+    ## Enable jj status
+    set -g tide_left_prompt_items pwd vcs character
+
     # Load fzf shell integration
     if type -q fzf
         if fzf --fish >/dev/null 2>&1
