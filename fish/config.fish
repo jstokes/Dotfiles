@@ -6,9 +6,18 @@
 # 1. Environment & PATH (Interactive & Non-Interactive)
 # -----------------------------------------------------------------------------
 
-# Initialize Homebrew (checks macOS Apple Silicon, Linux Homebrew, macOS Intel)
-if test -f /opt/homebrew/bin/brew
-    eval (/opt/homebrew/bin/brew shellenv)
+if test -d /opt/homebrew
+    set -gx HOMEBREW_PREFIX /opt/homebrew
+    set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
+    set -gx HOMEBREW_REPOSITORY /opt/homebrew
+    fish_add_path -g -m -p /opt/homebrew/bin /opt/homebrew/sbin
+    if test -n "$MANPATH"
+        set -gx MANPATH (string replace --regex '^:*(.*?):*$' ':$1' -- "$MANPATH")
+    end
+    if not set -q INFOPATH
+        set INFOPATH ''
+    end
+    set -gx INFOPATH /opt/homebrew/share/info $INFOPATH
 else if test -f /home/linuxbrew/.linuxbrew/bin/brew
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 else if test -f /usr/local/bin/brew
@@ -26,8 +35,11 @@ fish_add_path "/usr/local/share/npm/bin"
 fish_add_path "$HOME/.npm-global/bin"
 fish_add_path "/usr/local/opt/ruby/bin"
 
-if type -q gem
-    fish_add_path (gem environment gemdir)/bin
+# Ruby gems bin directory (fast check without booting Ruby VM)
+for gemdir in /opt/homebrew/lib/ruby/gems/*/bin ~/.gem/ruby/*/bin
+    if test -d "$gemdir"
+        fish_add_path "$gemdir"
+    end
 end
 if test -d "$HOME/Library/Python/3.12/bin"
     fish_add_path "$HOME/Library/Python/3.12/bin"
@@ -90,12 +102,16 @@ end
 set -gx GODEBUG asyncpreemptoff=1
 set -gx TFENV_ARCH amd64
 
-if test -x /usr/libexec/java_home
-    set -gx JAVA_HOME (/usr/libexec/java_home -v 17)
+if test -d /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+    set -gx JAVA_HOME /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+else if test -x /usr/libexec/java_home
+    set -gx JAVA_HOME (/usr/libexec/java_home -v 17 2>/dev/null)
 end
 
-if type -q brew; and brew --prefix maven >/dev/null 2>&1
-    set -gx M2_HOME (brew --prefix maven)/libexec
+if test -d /opt/homebrew/opt/maven/libexec
+    set -gx M2_HOME /opt/homebrew/opt/maven/libexec
+else if test -d /usr/local/opt/maven/libexec
+    set -gx M2_HOME /usr/local/opt/maven/libexec
 end
 
 set -gx LEIN_SNAPSHOTS_IN_RELEASE "true"
@@ -167,11 +183,7 @@ if status is-interactive
 
     # Load fzf shell integration
     if type -q fzf
-        if fzf --fish >/dev/null 2>&1
-            fzf --fish | source
-        else if test -f /usr/share/doc/fzf/examples/key-bindings.fish
-            source /usr/share/doc/fzf/examples/key-bindings.fish
-        end
+        fzf --fish | source
     end
 
     # User key bindings (automatically executed by fish when key bindings initialize)
