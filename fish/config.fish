@@ -132,11 +132,6 @@ if not test -d "$TMPPREFIX"
     mkdir -p "$TMPPREFIX"
 end
 
-if type -q lesspipe.sh
-    set -gx LESSOPEN "| /usr/bin/env lesspipe.sh %s 2>&-"
-else if type -q lesspipe
-    set -gx LESSOPEN "| /usr/bin/env lesspipe %s 2>&-"
-end
 
 # Local environment file if present
 if test -f "$HOME/.local/bin/env.fish"
@@ -180,6 +175,7 @@ if status is-interactive
 
     ## Enable jj status
     set -g tide_left_prompt_items pwd vcs character
+    set -g tide_right_prompt_items status cmd_duration context jobs
 
     # Load fzf shell integration
     if type -q fzf
