@@ -8,3 +8,6 @@ email = "jeffecu88@gmail.com"
 df = ["diff"]
 ph = ["git", "push"]
 fetch = ["git", "fetch"]
+
+[ui]
+default-command = "log"
