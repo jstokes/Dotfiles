@@ -291,9 +291,6 @@ function f
     rg -ir $argv ./
 end
 
-function ssh-copy-id
-    cat ~/.ssh/id_rsa.pub | ssh "$argv[1]" "mkdir -p ~/.ssh/; cat >> ~/.ssh/authorized_keys"
-end
 
 function foreach
     while read -r l
