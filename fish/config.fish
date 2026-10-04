@@ -25,33 +25,33 @@ else if test -f /usr/local/bin/brew
 end
 
 # System and tool PATH entries (fish_add_path deduplicates automatically)
-fish_add_path /usr/local/sbin /usr/local/bin
-fish_add_path "$HOME/.cargo/bin"
-fish_add_path "$HOME/.local/bin"
-fish_add_path "$HOME/.babashka/bbin/bin"
-fish_add_path "$HOME/Developer/bin"
-fish_add_path "/usr/local/git/bin"
-fish_add_path "/usr/local/share/npm/bin"
-fish_add_path "$HOME/.npm-global/bin"
-fish_add_path "/usr/local/opt/ruby/bin"
+fish_add_path -g /usr/local/sbin /usr/local/bin
+fish_add_path -g "$HOME/.cargo/bin"
+fish_add_path -g "$HOME/.local/bin"
+fish_add_path -g "$HOME/.babashka/bbin/bin"
+fish_add_path -g "$HOME/Developer/bin"
+fish_add_path -g "/usr/local/git/bin"
+fish_add_path -g "/usr/local/share/npm/bin"
+fish_add_path -g "$HOME/.npm-global/bin"
+fish_add_path -g "/usr/local/opt/ruby/bin"
 
 # Ruby gems bin directory (fast check without booting Ruby VM)
 for gemdir in /opt/homebrew/lib/ruby/gems/*/bin ~/.gem/ruby/*/bin
     if test -d "$gemdir"
-        fish_add_path "$gemdir"
+        fish_add_path -g "$gemdir"
     end
 end
 if test -d "$HOME/Library/Python/3.12/bin"
-    fish_add_path "$HOME/Library/Python/3.12/bin"
+    fish_add_path -g "$HOME/Library/Python/3.12/bin"
 end
 if test -d "/snap/bin"
-    fish_add_path "/snap/bin"
+    fish_add_path -g "/snap/bin"
 end
 
 # Bun
 set -gx BUN_INSTALL "$HOME/.bun"
 if test -d "$BUN_INSTALL/bin"
-    fish_add_path "$BUN_INSTALL/bin"
+    fish_add_path -g "$BUN_INSTALL/bin"
 end
 
 # PNPM
@@ -61,35 +61,37 @@ else if test -d "$HOME/.local/share/pnpm"
     set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 end
 if set -q PNPM_HOME; and not contains "$PNPM_HOME" $PATH
-    fish_add_path "$PNPM_HOME"
+    fish_add_path -g "$PNPM_HOME"
 end
 
 # ZVM
 if test -d "$HOME/.zvm"
     set -gx ZVM_INSTALL "$HOME/.zvm/self"
-    fish_add_path "$HOME/.zvm/bin"
-    fish_add_path "$ZVM_INSTALL/"
+    fish_add_path -g "$HOME/.zvm/bin"
+    fish_add_path -g "$ZVM_INSTALL/"
 end
 
 # Local tool paths
 if test -d "$HOME/.lmstudio/bin"
-    fish_add_path "$HOME/.lmstudio/bin"
+    fish_add_path -g "$HOME/.lmstudio/bin"
 end
 if test -d "$HOME/.kimi-code/bin"
-    fish_add_path "$HOME/.kimi-code/bin"
+    fish_add_path -g "$HOME/.kimi-code/bin"
 end
 if test -d "$HOME/.opencode/bin"
-    fish_add_path "$HOME/.opencode/bin"
+    fish_add_path -g "$HOME/.opencode/bin"
 end
 if test -d "$HOME/go-local/go/bin"
-    fish_add_path "$HOME/go-local/go/bin"
+    fish_add_path -g "$HOME/go-local/go/bin"
 end
 
 # Environment variables
+set -gx DOCKER_HOST "unix:///run/user/1000/podman/podman.sock"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx PAGER less
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
+set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
 if string match -q "darwin*" $OSTYPE
     set -gx BROWSER open
