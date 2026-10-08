@@ -239,7 +239,6 @@ if status is-interactive
     alias type='type -a'
     alias dc='docker-compose'
     alias ldt='lein with-profile -user deps :tree 2>&1 | less -R'
-    alias gh='PAGER=cat gh'
 
 end
 
